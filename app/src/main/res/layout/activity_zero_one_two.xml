@@ -12,8 +12,19 @@
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         android:contentDescription="Back" />
 
-    <Button android:id="@+id/button0" android:text="0" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/button1" android:text="1" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/button2" android:text="2" style="@style/ChoiceButton"/>
+    <Button
+        android:id="@+id/button0"
+        style="@style/ChoiceButton"
+        android:text="Wzbudzenie" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/ChoiceButton"
+        android:text="Brak Wystrzału" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/ChoiceButton"
+        android:text="Błąd" />
 
 </LinearLayout>

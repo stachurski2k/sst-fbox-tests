@@ -24,7 +24,6 @@ public class MainChoiceActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
 
-        addDateLineToFile();
 
         findViewById(R.id.button1).setOnClickListener(v -> handleChoice("1", PBActivity.class));
         findViewById(R.id.button2).setOnClickListener(v -> handleChoice("2", PBActivity.class));
@@ -35,11 +34,12 @@ public class MainChoiceActivity extends AppCompatActivity {
         findViewById(R.id.buttonB).setOnClickListener(v -> handleChoice("b", ZeroOneTwoActivity.class));
         findViewById(R.id.buttonC).setOnClickListener(v -> handleChoice("c", ZeroOneTwoActivity.class));
         findViewById(R.id.buttonD).setOnClickListener(v -> handleChoice("d", ZeroOneTwoActivity.class));
-        findViewById(R.id.buttonE).setOnClickListener(v -> handleChoice("e", ZeroOneTwoActivity.class));
-        findViewById(R.id.buttonF).setOnClickListener(v -> handleChoice("f", ZeroOneTwoActivity.class));
+        findViewById(R.id.buttonBG).setOnClickListener(v -> handleChoice("bg", ZeroOneTwoActivity.class));
+        findViewById(R.id.buttonCG).setOnClickListener(v -> handleChoice("cg", ZeroOneTwoActivity.class));
     }
 
     private void handleChoice(String choice, Class<?> nextActivity) {
+        addDateLineToFile();
         saveChoice(choice);
         startActivity(new Intent(this, nextActivity));
     }
@@ -49,7 +49,7 @@ public class MainChoiceActivity extends AppCompatActivity {
         String filename = prefs.getString(MainActivity.CURRENT_FILENAME_KEY, "fallback.txt");
 
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-        String dateLine = "\n " + timestamp + "    ";
+        String dateLine = "\n " + timestamp + ";";
 
         try (FileOutputStream fos = openFileOutput(filename, MODE_APPEND)) {
             fos.write(dateLine.getBytes());

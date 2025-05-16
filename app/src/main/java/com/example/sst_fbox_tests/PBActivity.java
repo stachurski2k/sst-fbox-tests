@@ -21,7 +21,7 @@ public class PBActivity extends AppCompatActivity {
 
     private void saveAndGoBack(String choice) {
         saveChoice(choice);
-        startActivity(new android.content.Intent(this, OneTwoActivity.class));
+        startActivity(new android.content.Intent(this, MainChoiceActivity.class));
     }
 
     private void saveChoice(String choice) {

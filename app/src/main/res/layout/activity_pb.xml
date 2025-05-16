@@ -16,12 +16,12 @@
         android:id="@+id/buttonP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="p" />
+        android:text="Przesunięcie" />
 
     <Button
         android:id="@+id/buttonB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="b" />
+        android:text="Brak " />
 
 </LinearLayout>

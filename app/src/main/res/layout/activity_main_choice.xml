@@ -50,19 +50,19 @@
 
     <Button
         android:id="@+id/buttonB"
-        android:text="b"
         style="@style/ChoiceButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
+        android:layout_columnWeight="1"
+        android:text="b" />
 
     <Button
         android:id="@+id/buttonC"
-        android:text="c"
         style="@style/ChoiceButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
+        android:layout_columnWeight="1"
+        android:text="c" />
 
     <Button
         android:id="@+id/buttonD"
@@ -73,18 +73,18 @@
         android:layout_columnWeight="1" />
 
     <Button
-        android:id="@+id/buttonE"
-        android:text="e"
+        android:id="@+id/buttonBG"
         style="@style/ChoiceButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
+        android:layout_columnWeight="1"
+        android:text="bg" />
 
     <Button
-        android:id="@+id/buttonF"
-        android:text="f"
+        android:id="@+id/buttonCG"
         style="@style/ChoiceButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
+        android:layout_columnWeight="1"
+        android:text="cg" />
 </GridLayout>
