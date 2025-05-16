@@ -49,7 +49,7 @@ public class MainChoiceActivity extends AppCompatActivity {
         String filename = prefs.getString(MainActivity.CURRENT_FILENAME_KEY, "fallback.txt");
 
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-        String dateLine = "\n=== SESSION STARTED: " + timestamp + " ===\n";
+        String dateLine = "\n " + timestamp + "    ";
 
         try (FileOutputStream fos = openFileOutput(filename, MODE_APPEND)) {
             fos.write(dateLine.getBytes());
