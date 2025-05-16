@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sstfboxtests"
         tools:targetApi="31">
+        <activity android:name=".ZeroOneTwoActivity"/>
+        <activity android:name=".OneTwoActivity"/>
+        <activity android:name=".PBActivity"/>
+        <activity android:name=".MainChoiceActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
