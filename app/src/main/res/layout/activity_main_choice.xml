@@ -6,85 +6,15 @@
     android:columnCount="2"
     android:padding="16dp"
     android:alignmentMode="alignMargins"
-    android:rowCount="6"
-    android:useDefaultMargins="true">
-    <Button
-        android:id="@+id/button1"
-        android:text="1"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/button2"
-        android:text="2"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/button3"
-        android:text="3"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/button4"
-        android:text="4"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/buttonA"
-        android:text="a"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/buttonB"
-        android:text="b"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/buttonC"
-        android:text="c"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/buttonD"
-        android:text="d"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/buttonE"
-        android:text="e"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/buttonF"
-        android:text="f"
-        style="@style/ChoiceButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1" />
+    android:rowCount="6">
+    <Button android:id="@+id/button1" android:text="1" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/button2" android:text="2" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/button3" android:text="3" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/button4" android:text="4" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/buttonA" android:text="a" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/buttonB" android:text="b" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/buttonC" android:text="c" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/buttonD" android:text="d" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/buttonE" android:text="e" style="@style/ChoiceButton"/>
+    <Button android:id="@+id/buttonF" android:text="f" style="@style/ChoiceButton"/>
 </GridLayout>
