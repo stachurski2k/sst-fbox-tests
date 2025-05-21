@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button startButton = findViewById(R.id.buttonStart);
         startButton.setOnClickListener(v -> {
-            ChoiceLogger.startNewSession(this); // tworzymy nową sekcję z datą
+            ChoiceLogger.startNewSession(this); // tworzymy nową sesję z nowym plikiem
             Intent intent = new Intent(this, MainChoiceActivity.class);
             startActivity(intent);
         });

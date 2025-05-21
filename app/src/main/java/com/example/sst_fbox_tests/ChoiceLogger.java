@@ -6,23 +6,17 @@ import java.util.Date;
 import java.util.Locale;
 
 public class ChoiceLogger {
-    private static final String FILE_NAME = "choices_data.txt";
+    private static String fileName;
 
     public static void startNewSession(Context context) {
-        try {
-            FileOutputStream fos = context.openFileOutput(FILE_NAME, Context.MODE_APPEND);
-            String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-            String line = "\n--- Nowa sesja: " + timestamp + " ---\n";
-            fos.write(line.getBytes());
-            fos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        fileName = "choices_" + timestamp + ".txt";
     }
 
     public static void appendChoices(Context context, String choices) {
+        if (fileName == null) return;
         try {
-            FileOutputStream fos = context.openFileOutput(FILE_NAME, Context.MODE_APPEND);
+            FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_APPEND);
             fos.write((choices + "\n").getBytes());
             fos.close();
         } catch (Exception e) {
@@ -30,3 +24,4 @@ public class ChoiceLogger {
         }
     }
 }
+
