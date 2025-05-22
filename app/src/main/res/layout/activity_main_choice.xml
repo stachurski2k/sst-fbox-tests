@@ -4,17 +4,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="2"
+    android:rowCount="6"
     android:padding="16dp"
-    android:alignmentMode="alignMargins"
-    android:rowCount="6">
-    <Button android:id="@+id/button1" android:text="1" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/button2" android:text="2" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/button3" android:text="3" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/button4" android:text="4" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/buttonA" android:text="a" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/buttonB" android:text="b" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/buttonC" android:text="c" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/buttonD" android:text="d" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/buttonE" android:text="e" style="@style/ChoiceButton"/>
-    <Button android:id="@+id/buttonF" android:text="f" style="@style/ChoiceButton"/>
+    android:useDefaultMargins="true">
+    <Button
+        android:id="@+id/button1"
+        android:text="1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:text="2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:text="3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:text="4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/buttonA"
+        android:text="a"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/buttonB"
+        android:text="b"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/buttonC"
+        android:text="c"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/buttonD"
+        android:text="d"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/buttonE"
+        android:text="e"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/buttonF"
+        android:text="f"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textSize="24sp"/>
 </GridLayout>

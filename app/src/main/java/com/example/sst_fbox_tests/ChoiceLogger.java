@@ -17,11 +17,11 @@ public class ChoiceLogger {
         if (fileName == null) return;
         try {
             FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_APPEND);
-            fos.write((choices + "\n").getBytes());
+            String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
+            fos.write((timestamp + ": " + choices + "\n").getBytes());
             fos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-

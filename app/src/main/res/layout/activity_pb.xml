@@ -9,5 +9,6 @@
 
     <Button android:id="@+id/buttonP" android:text="p" style="@style/ChoiceButton" />
     <Button android:id="@+id/buttonB" android:text="b" style="@style/ChoiceButton" />
+    <Button android:id="@+id/buttonO" android:text="o" style="@style/ChoiceButton"/>
     <Button android:id="@+id/buttonBack" android:text="⮌ Wróć" style="@style/BackButton" />
 </LinearLayout>

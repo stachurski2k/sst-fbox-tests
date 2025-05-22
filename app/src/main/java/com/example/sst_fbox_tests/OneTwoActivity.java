@@ -1,8 +1,10 @@
 package com.example.sst_fbox_tests;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.MotionEvent;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class OneTwoActivity extends AppCompatActivity {
@@ -15,13 +17,23 @@ public class OneTwoActivity extends AppCompatActivity {
 
         currentChoices = getIntent().getStringExtra("currentChoices");
 
-        findViewById(R.id.button1).setOnClickListener(v -> finishChoices("1"));
-        findViewById(R.id.button2).setOnClickListener(v -> finishChoices("2"));
+        View touchView = findViewById(R.id.touchView);
+        touchView.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                int x = (int) event.getX();
+                int y = (int) event.getY();
+                finishWithCoordinates(x, y);
+                return true;
+            }
+            return false;
+        });
+
         findViewById(R.id.buttonBack).setOnClickListener(v -> finish());
     }
 
-    private void finishChoices(String choice) {
-        currentChoices += choice + ";";
+    private void finishWithCoordinates(int x, int y) {
+        String coord = "(" + x + "," + y + ");";
+        currentChoices += coord;
         Intent intent = new Intent(this, MainChoiceActivity.class);
         intent.putExtra("finalChoices", currentChoices);
         startActivity(intent);
