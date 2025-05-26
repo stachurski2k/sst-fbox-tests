@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
@@ -20,6 +21,9 @@ public class OneTwoActivity extends AppCompatActivity {
 
         currentChoices = getIntent().getStringExtra("currentChoices");
         targetZone = findViewById(R.id.targetZone);
+
+        Button buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(v -> finish());
 
         FrameLayout rootLayout = findViewById(R.id.rootLayout);
         rootLayout.setOnTouchListener((v, event) -> {

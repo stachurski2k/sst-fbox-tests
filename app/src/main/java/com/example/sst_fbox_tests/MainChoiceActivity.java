@@ -3,8 +3,8 @@ package com.example.sst_fbox_tests;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainChoiceActivity extends AppCompatActivity {
     private StringBuilder currentChoices = new StringBuilder();
@@ -13,7 +13,6 @@ public class MainChoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_choice);
-
 
         setupButton(R.id.button1, "1");
         setupButton(R.id.button2, "2");
@@ -50,7 +49,6 @@ public class MainChoiceActivity extends AppCompatActivity {
         if (savedChoices != null && !savedChoices.isEmpty()) {
             ChoiceLogger.appendChoices(this, savedChoices);
             getIntent().removeExtra("finalChoices");
-
         }
     }
 }

@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
         Button startButton = findViewById(R.id.buttonStart);
         startButton.setOnClickListener(v -> {
             ChoiceLogger.startNewSession(this);
-            startActivity(new Intent(this, MainChoiceActivity.class));
+            Intent intent = new Intent(this, MainChoiceActivity.class);
+            startActivity(intent);
         });
     }
 }
