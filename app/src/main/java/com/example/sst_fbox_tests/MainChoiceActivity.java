@@ -14,6 +14,7 @@ public class MainChoiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_choice);
 
+
         setupButton(R.id.button1, "1");
         setupButton(R.id.button2, "2");
         setupButton(R.id.button3, "3");
@@ -49,6 +50,7 @@ public class MainChoiceActivity extends AppCompatActivity {
         if (savedChoices != null && !savedChoices.isEmpty()) {
             ChoiceLogger.appendChoices(this, savedChoices);
             getIntent().removeExtra("finalChoices");
+
         }
     }
 }

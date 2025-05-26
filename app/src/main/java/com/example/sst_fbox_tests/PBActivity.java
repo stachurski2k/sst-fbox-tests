@@ -15,10 +15,12 @@ public class PBActivity extends AppCompatActivity {
 
         currentChoices = getIntent().getStringExtra("currentChoices");
 
+
         Button buttonP = findViewById(R.id.buttonP);
         Button buttonB = findViewById(R.id.buttonB);
         Button buttonO = findViewById(R.id.buttonO);
         Button buttonBack = findViewById(R.id.buttonBack);
+
 
         buttonP.setOnClickListener(v -> {
             // p -> przejdź do ekranu wybierania miejsc
