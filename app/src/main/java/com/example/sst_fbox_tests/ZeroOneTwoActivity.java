@@ -1,8 +1,8 @@
 package com.example.sst_fbox_tests;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ZeroOneTwoActivity extends AppCompatActivity {
     private String currentChoices;
