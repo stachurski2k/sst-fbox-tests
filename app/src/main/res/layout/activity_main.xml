@@ -17,4 +17,10 @@
         android:text="Startt"
         android:textSize="24sp"
         android:padding="16dp" />
+    <Button
+        android:id="@+id/buttonStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Statystyki"
+        android:layout_marginTop="24dp"/>
 </LinearLayout>
