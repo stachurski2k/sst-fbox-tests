@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainChoiceActivity.class);
             startActivity(intent);
         });
+
         Button statsButton = findViewById(R.id.buttonStats);
         statsButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, StatsActivity.class);

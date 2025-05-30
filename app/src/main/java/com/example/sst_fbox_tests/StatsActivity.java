@@ -3,50 +3,57 @@ import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class StatsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stats);
+        setContentView(R.layout.activity_stats  );
 
-        TextView statsView = findViewById(R.id.statsText);
+        TextView statsTextView = findViewById(R.id.statsText);
         HashMap<String, Integer> counts = new HashMap<>();
-        counts.put("p", 0);
-        counts.put("b", 0);
-        counts.put("o", 0);
-
         int total = 0;
 
-        try {
-            String[] files = fileList();
-            for (String file : files) {
-                if (file.startsWith("choices_20250527_082930") && file.endsWith(".txt")) {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(openFileInput(file)));
+        File dir = getFilesDir();
+        File[] files = dir.listFiles((d, name) -> name.startsWith("choices_"));
+
+        if (files != null) {
+            for (File file : files) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
                     String line;
                     while ((line = reader.readLine()) != null) {
-
+                        String[] parts = line.split(": ");
+                        if (parts.length == 2) {
+                            String[] choices = parts[1].split(";");
+                            for (String c : choices) {
+                                if (c.equals("p") || c.equals("o") || c.equals("b")) {
+                                    counts.put(c, counts.getOrDefault(c, 0) + 1);
+                                    total++;
+                                }
+                            }
+                        }
                     }
-                    reader.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-        } catch (Exception e) {
-            statsView.setText("Błąd: " + e.getMessage());
-            return;
         }
 
         if (total == 0) {
-            statsView.setText("Brak danych do wyświetlenia.");
+            statsTextView.setText("Brak danych do wyświetlenia");
         } else {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder stats = new StringBuilder("Statystyki:\n");
             for (String key : counts.keySet()) {
                 int count = counts.get(key);
-                int percent = (int) Math.round((count * 100.0) / total);
-                sb.append(key).append(" = ").append(percent).append("%\n");
+                float percent = (count * 100f) / total;
+                stats.append(String.format(Locale.getDefault(), "%s: %.1f%%\n", key, percent));
             }
-            statsView.setText(sb.toString());
+            statsTextView.setText(stats.toString());
         }
     }
 }

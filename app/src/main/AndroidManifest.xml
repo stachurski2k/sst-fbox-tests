@@ -19,6 +19,7 @@
         <activity android:name=".OneTwoActivity"/>
         <activity android:name=".PBActivity"/>
         <activity android:name=".MainChoiceActivity"/>
+        <activity android:name=".StatsActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
