@@ -11,31 +11,31 @@
         android:id="@+id/button0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="24sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:text="Wzbudzenie"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1"
-        android:textSize="24sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:text="Brak Wystrzału"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="2"
-        android:textSize="24sp"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="32dp"
+        android:text="Inny Błąd"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="X"
-        android:textSize="20sp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:text="Powrót"
+        android:textSize="20sp" />
 </LinearLayout>

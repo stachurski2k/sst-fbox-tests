@@ -1,59 +1,129 @@
 package com.example.sst_fbox_tests;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Locale;
 
 public class StatsActivity extends AppCompatActivity {
+    private ActivityResultLauncher<Intent> filePickerLauncher;
+    class WallInfo{
+        int wallIdx;
+        int ballmissing=0;
+        int ballmoved=0;
+        int ballok=0;
+        public WallInfo(int idx){
+            wallIdx=idx;
+        }
+        public int Total(){
+            return ballmoved+ballok+ballmissing;
+        }
+        public float GetAccMissing(){
+            if(Total()==0)return 0;
+            return (1.0f-(float)ballmissing/Total())*100f;
+        }
+        public float GetAccMissingMoved(){
+            if(Total()==0)return 0;
+            return (1.0f-(float)(ballmissing+ballmoved)/Total())*100.0f;
+        }
+        public void AddLog(String option) {
+            if(option.equals("o")){
+                ballok+=1;
+            }
+            if(option.equals("b")){
+                ballmissing+=1;
+            }
+            if(option.equals("p")){
+                ballmoved+=1;
+            }
+        }
+        public String PrintInfo(){
+            return String.format("Sciana %d \n\t\t %d - Suma\n\t\t %.2f%% - Braki\n\t\t %.2f%% - Przesuniecia\n",wallIdx,Total(),GetAccMissing(),GetAccMissingMoved());
+        }
+    };
+    void ProcessFile(String file){
+        WallInfo[] walls = new WallInfo[4];
+        for(int i =0;i<4;i++){
+            walls[i]=new WallInfo(i+1);
+        }
+
+        String[] lines = file.split("\\r?\\n");
+        for (String line : lines) {
+            String[] info =line.split(";");
+            if(info.length<3){continue;}
+            try{
+                int wallIdx= Integer.parseInt(info[1])-1;
+                walls[wallIdx].AddLog(info[2]);
+
+            }catch(Exception e){}
+
+        }
+        TextView statsTextView = findViewById(R.id.statsText);
+        String stats="";
+        for(WallInfo w:walls){
+            stats+=w.PrintInfo();
+        }
+        statsTextView.setText(stats.toString());
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats  );
-
-        TextView statsTextView = findViewById(R.id.statsText);
-        HashMap<String, Integer> counts = new HashMap<>();
-        int total = 0;
-
-        File dir = getFilesDir();
-        File[] files = dir.listFiles((d, name) -> name.startsWith("choices_"));
-
-        if (files != null) {
-            for (File file : files) {
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        String[] parts = line.split(": ");
-                        if (parts.length == 2) {
-                            String[] choices = parts[1].split(";");
-                            for (String c : choices) {
-                                if (c.equals("p") || c.equals("o") || c.equals("b")) {
-                                    counts.put(c, counts.getOrDefault(c, 0) + 1);
-                                    total++;
-                                }
-                            }
+        filePickerLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data != null) {
+                            Uri uri = data.getData();
+                            String content = readTextFromUri(uri);
+                            ProcessFile(content);
                         }
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
-            }
-        }
-
-        if (total == 0) {
-            statsTextView.setText("Brak danych do wyświetlenia");
-        } else {
-            StringBuilder stats = new StringBuilder("Statystyki:\n");
-            for (String key : counts.keySet()) {
-                int count = counts.get(key);
-                float percent = (count * 100f) / total;
-                stats.append(String.format(Locale.getDefault(), "%s: %.1f%%\n", key, percent));
-            }
-            statsTextView.setText(stats.toString());
-        }
+        );
+        openFilePicker();
+        Button returnButton = findViewById(R.id.returnBtn);
+        returnButton.setOnClickListener(v->{
+            proceed();
+        });
     }
+    private String readTextFromUri(Uri uri) {
+        StringBuilder stringBuilder = new StringBuilder();
+        try (InputStream inputStream = getContentResolver().openInputStream(uri);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line).append('\n');
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
+    }
+    private void openFilePicker() {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.setType("*/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        filePickerLauncher.launch(intent);
+    }
+    private void proceed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }

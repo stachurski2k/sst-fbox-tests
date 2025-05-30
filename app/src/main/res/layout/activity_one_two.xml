@@ -14,10 +14,10 @@
 
     <Button
         android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
+        android:layout_width="373dp"
         android:layout_height="wrap_content"
-        android:text="Wróć"
-        android:layout_gravity="top|end"
-        android:layout_margin="16dp" />
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:text="Wróć" />
 
 </FrameLayout>

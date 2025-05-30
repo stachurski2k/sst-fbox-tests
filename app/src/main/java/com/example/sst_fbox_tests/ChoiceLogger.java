@@ -24,7 +24,7 @@ public class ChoiceLogger {
 
             FileWriter writer = new FileWriter(file, true);
             String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-            writer.append(timestamp).append(": ").append(choices).append("\n");
+            writer.append(timestamp).append(";").append(choices).append("\n");
             writer.flush();
             writer.close();
         } catch (Exception e) {

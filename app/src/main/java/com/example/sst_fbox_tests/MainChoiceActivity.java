@@ -40,6 +40,11 @@ public class MainChoiceActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button returnButton = findViewById(R.id.returnBtn);
+        returnButton.setOnClickListener(v->{
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
