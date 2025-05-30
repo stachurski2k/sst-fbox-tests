@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class StatsActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> filePickerLauncher;
@@ -55,8 +56,39 @@ public class StatsActivity extends AppCompatActivity {
             return String.format("Sciana %d \n\t\t %d - Suma\n\t\t %.2f%% - Braki\n\t\t %.2f%% - Przesuniecia\n",wallIdx,Total(),GetAccMissing(),GetAccMissingMoved());
         }
     };
+    class ThrowerInfo{
+        String throwerName;
+        public int noShotCount=0;
+        public int awakingCount=0;
+        public int errorCount=0;
+        public ThrowerInfo(String name){
+            throwerName=name;
+        }
+        public String PrintInfo(){
+            return String.format("Wyrzutnik %s \n\t\t %d - Wzbudzenia\n\t\t %d - Braki wystrzału\n\t\t %d - Inne błędy\n",throwerName,awakingCount,noShotCount,errorCount);
+        }
+        public void AddLog(String log){
+            if(log.equals("0")){
+                awakingCount+=1;
+            }
+            if(log.equals("1")){
+                noShotCount+=1;
+            }
+            if(log.equals("2")){
+                errorCount+=1;
+            }
+        }
+    }
     void ProcessFile(String file){
         WallInfo[] walls = new WallInfo[4];
+        Map<String,ThrowerInfo> throwers=new HashMap<>();
+        throwers.put("a",new ThrowerInfo("Dolny A"));
+        throwers.put("b",new ThrowerInfo("Dolny B"));
+        throwers.put("c",new ThrowerInfo("Dolny C"));
+        throwers.put("d",new ThrowerInfo("Dolny D"));
+        throwers.put("bg",new ThrowerInfo("Górny B"));
+        throwers.put("cg",new ThrowerInfo("Górny C"));
+
         for(int i =0;i<4;i++){
             walls[i]=new WallInfo(i+1);
         }
@@ -68,14 +100,20 @@ public class StatsActivity extends AppCompatActivity {
             try{
                 int wallIdx= Integer.parseInt(info[1])-1;
                 walls[wallIdx].AddLog(info[2]);
-
-            }catch(Exception e){}
+            }catch(Exception e){
+                if(throwers.containsKey(info[1])){
+                    throwers.get(info[1]).AddLog(info[2]);
+                }
+            }
 
         }
         TextView statsTextView = findViewById(R.id.statsText);
         String stats="";
         for(WallInfo w:walls){
             stats+=w.PrintInfo();
+        }
+        for(ThrowerInfo i:throwers.values()){
+            stats+=i.PrintInfo();
         }
         statsTextView.setText(stats.toString());
     }

@@ -22,8 +22,8 @@ public class MainChoiceActivity extends AppCompatActivity {
         setupButton(R.id.buttonB, "b");
         setupButton(R.id.buttonC, "c");
         setupButton(R.id.buttonD, "d");
-        setupButton(R.id.buttonE, "e");
-        setupButton(R.id.buttonF, "f");
+        setupButton(R.id.buttonE, "bg");
+        setupButton(R.id.buttonF, "cg");
     }
 
     private void setupButton(int id, String label) {
