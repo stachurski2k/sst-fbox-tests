@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.eventbus)
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
+    implementation(libs.material)
 
     implementation(libs.appcompat)
     implementation(libs.material)
