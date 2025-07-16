@@ -1,4 +1,4 @@
-package com.example.sst_fbox_tests;
+package pl.vrtechnology.fboxtester;
 
 import org.junit.Test;
 

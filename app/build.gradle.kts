@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sst_fbox_tests"
-    compileSdk = 35
+    namespace = "pl.vrtechnology.fboxtester"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.sst_fbox_tests"
-        minSdk = 24
-        targetSdk = 35
+        applicationId = "pl.vrtechnology.fboxtester"
+        minSdk = 26
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 

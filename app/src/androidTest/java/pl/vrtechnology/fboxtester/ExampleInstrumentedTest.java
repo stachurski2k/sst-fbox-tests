@@ -1,4 +1,4 @@
-package com.example.sst_fbox_tests;
+package pl.vrtechnology.fboxtester;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.sst_fbox_tests", appContext.getPackageName());
+        assertEquals("pl.vrtechnology.fboxtester", appContext.getPackageName());
     }
 }

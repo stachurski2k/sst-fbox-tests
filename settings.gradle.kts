@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "sst-fbox-tests"
+rootProject.name = "FBox Tester"
 include(":app")
- 
