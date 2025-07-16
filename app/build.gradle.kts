@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.dagger.hilt.android") version "2.56.2" apply false
 }
 
 android {
@@ -32,6 +33,16 @@ android {
 }
 
 dependencies {
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.9.1")
+    implementation("androidx.lifecycle:lifecycle-livedata:2.9.1")
+    implementation("androidx.lifecycle:lifecycle-runtime:2.9.1")
+    implementation("androidx.lifecycle:lifecycle-process:2.9.1")
+    implementation("androidx.databinding:databinding-runtime:8.11.0")
+    implementation("com.google.dagger:hilt-android:2.44")
+    annotationProcessor("com.google.dagger:hilt-compiler:2.44")
+    implementation("org.greenrobot:eventbus:3.3.1")
+    compileOnly("org.projectlombok:lombok:1.18.38")
+    annotationProcessor("org.projectlombok:lombok:1.18.38")
 
     implementation(libs.appcompat)
     implementation(libs.material)
