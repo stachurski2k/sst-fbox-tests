@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FBox Tester</string>
+    <string name="main_menu_title">FBOX TESTER</string>
+    <string name="main_menu_start">Rozpocznij</string>
+    <string name="main_menu_settings">Ustawienia</string>
+</resources>

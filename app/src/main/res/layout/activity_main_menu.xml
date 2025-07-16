@@ -20,7 +20,7 @@
             android:textAlignment="center"
             android:textSize="32sp"
             android:layout_marginVertical="20dp"
-            android:text="FBOX TESTER" />
+            android:text="@string/main_menu_title" />
 
         <Button
             android:id="@+id/button_main_menu_start"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textSize="24sp"
-            android:text="Start"/>
+            android:text="@string/main_menu_start"/>
 
         <Button
             android:id="@+id/button_main_menu_settings"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textSize="24sp"
-            android:text="Settings"/>
+            android:text="@string/main_menu_settings"/>
 
     </LinearLayout>
 </ScrollView>
