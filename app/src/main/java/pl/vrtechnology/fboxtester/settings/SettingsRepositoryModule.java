@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent;
 
 @Module
 @InstallIn(SingletonComponent.class)
-class SettingsRepositoryModule {
+public class SettingsRepositoryModule {
 
     @Provides
     @Singleton
