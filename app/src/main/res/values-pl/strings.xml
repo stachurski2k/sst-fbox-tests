@@ -7,4 +7,9 @@
     <string name="settings_title">Ustawienia</string>
     <string name="settings_server_address_hint">Adres serwera</string>
     <string name="settings_server_port_hint">Port serwera</string>
+    <string name="settings_server_address_helper">Podaj adres serwera (np. 172.20.0.226)</string>
+    <string name="settings_server_port_helper">Podaj port serwera (np. 8080)</string>
+    <string name="settings_enable_sending_to_server">Włącz wysyłanie danych do serwera</string>
+    <string name="settings_save_changes">Zapisz ustawienia</string>
+    <string name="settings_server_connection_section">Połączenie z serwerem</string>
 </resources>
