@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.silsense.fboxtester.R;
 import pl.silsense.fboxtester.databinding.ActivityMainMenuBinding;
+import pl.silsense.fboxtester.session.SessionManagerActivity;
 import pl.silsense.fboxtester.settings.SettingsActivity;
 
 @AndroidEntryPoint
@@ -40,7 +41,7 @@ public class MainMenuActivity extends AppCompatActivity {
         });
 
         viewModel.getOpenSessionManagerEvent().observe(this, unused -> {
-            //startActivity(.class);
+            startActivity(SessionManagerActivity.class);
         });
     }
 

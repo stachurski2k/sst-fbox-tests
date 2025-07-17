@@ -13,7 +13,8 @@
         android:theme="@style/Theme.FBoxTester">
         <activity
             android:name=".menu.MainMenuActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +25,11 @@
             android:name=".settings.SettingsActivity"
             android:exported="false"
             android:theme="@style/Theme.FBoxTester.VisibleActionBar"/>
+        <activity
+            android:name=".session.SessionManagerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FBoxTester.VisibleActionBar"
+            android:screenOrientation="sensorPortrait"/>
     </application>
 
 </manifest>

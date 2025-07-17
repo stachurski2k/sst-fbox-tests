@@ -14,4 +14,5 @@
     <string name="settings_server_address_valitation_error">Incorrect server IP</string>
     <string name="settings_server_port_valitation_error">Incorrect server port</string>
     <string name="settings_settings_saved_toast">Settings saved.</string>
+    <string name="session_manager_title">Session Manager</string>
 </resources>
