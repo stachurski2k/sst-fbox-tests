@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FBoxTester">
         <activity
-            android:name=".MainMenuActivity"
+            android:name=".menu.MainMenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
