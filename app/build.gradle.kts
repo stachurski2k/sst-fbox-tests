@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "pl.vrtechnology.fboxtester"
+    namespace = "pl.silsense.fboxtester"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "pl.vrtechnology.fboxtester"
+        applicationId = "pl.silsense.fboxtester"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

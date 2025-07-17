@@ -1,4 +1,4 @@
-package pl.vrtechnology.fboxtester.settings;
+package pl.silsense.fboxtester.settings;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,8 +12,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import pl.vrtechnology.fboxtester.R;
-import pl.vrtechnology.fboxtester.databinding.ActivitySettingsBinding;
+import pl.silsense.fboxtester.R;
+import pl.silsense.fboxtester.databinding.ActivitySettingsBinding;
 
 @AndroidEntryPoint
 public class SettingsActivity extends AppCompatActivity {

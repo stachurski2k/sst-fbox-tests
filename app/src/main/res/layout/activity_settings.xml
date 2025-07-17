@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="pl.vrtechnology.fboxtester.settings.SettingsViewModel" />
+            type="pl.silsense.fboxtester.settings.SettingsViewModel" />
     </data>
 
     <ScrollView

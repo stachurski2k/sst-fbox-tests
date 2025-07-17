@@ -1,12 +1,10 @@
-package pl.vrtechnology.fboxtester.util;
+package pl.silsense.fboxtester.util;
 
 import android.content.Context;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.databinding.BindingAdapter;
 
-import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class BindingAdapters {

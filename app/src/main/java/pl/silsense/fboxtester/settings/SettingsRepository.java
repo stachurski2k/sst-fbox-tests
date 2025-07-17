@@ -1,4 +1,4 @@
-package pl.vrtechnology.fboxtester.settings;
+package pl.silsense.fboxtester.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;

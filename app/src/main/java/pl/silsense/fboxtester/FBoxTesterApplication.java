@@ -1,4 +1,4 @@
-package pl.vrtechnology.fboxtester;
+package pl.silsense.fboxtester;
 
 import android.app.Application;
 

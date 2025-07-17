@@ -1,4 +1,4 @@
-package pl.vrtechnology.fboxtester.util;
+package pl.silsense.fboxtester.util;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;

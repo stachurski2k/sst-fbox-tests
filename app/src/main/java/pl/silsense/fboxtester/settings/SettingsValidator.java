@@ -1,9 +1,9 @@
-package pl.vrtechnology.fboxtester.settings;
+package pl.silsense.fboxtester.settings;
 
 import androidx.annotation.Nullable;
 
-import pl.vrtechnology.fboxtester.R;
-import pl.vrtechnology.fboxtester.util.ValidationResult;
+import pl.silsense.fboxtester.R;
+import pl.silsense.fboxtester.util.ValidationResult;
 
 import java.util.regex.Pattern;
 
