@@ -10,8 +10,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 class SettingsViewModel extends ViewModel {
 
+    private final SettingsRepository settingsRepository;
+
     @Inject
     SettingsViewModel(@NonNull SettingsRepository settingsRepository) {
-        //
+        this.settingsRepository = settingsRepository;
     }
 }
