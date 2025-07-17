@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".session.SessionManagerActivity">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="pl.silsense.fboxtester.session.SessionManagerViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
@@ -21,6 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{() -> viewModel.openNewSessionDialog()}"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -49,6 +56,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{() -> viewModel.openImportSessionDialog()}"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
@@ -99,6 +107,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
+            android:onClick="@{() -> viewModel.continueLastSession()}"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

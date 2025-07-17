@@ -2,17 +2,17 @@ package pl.silsense.fboxtester.session;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.silsense.fboxtester.R;
+import pl.silsense.fboxtester.databinding.ActivitySessionManagerBinding;
 
 @AndroidEntryPoint
 public class SessionManagerActivity extends AppCompatActivity {
@@ -29,10 +29,10 @@ public class SessionManagerActivity extends AppCompatActivity {
             actionBar.setTitle(R.string.session_manager_title);
         }
 
-        /*SettingsViewModel viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
-        ActivitySettingsBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_settings);
+        SessionManagerViewModel viewModel = new ViewModelProvider(this).get(SessionManagerViewModel.class);
+        ActivitySessionManagerBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_session_manager);
         binding.setViewModel(viewModel);
-        binding.setLifecycleOwner(this);*/
+        binding.setLifecycleOwner(this);
     }
 
     @Override
