@@ -7,10 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.vrtechnology.fboxtester.R;
+import pl.vrtechnology.fboxtester.databinding.ActivitySettingsBinding;
 
 @AndroidEntryPoint
 public class SettingsActivity extends AppCompatActivity {
@@ -28,6 +30,9 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         SettingsViewModel viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
+        ActivitySettingsBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_settings);
+        binding.setViewModel(viewModel);
+        binding.setLifecycleOwner(this);
     }
 
     @Override

@@ -11,4 +11,6 @@
     <string name="settings_enable_sending_to_server">Enable sending data to the server</string>
     <string name="settings_save_changes">Save changes</string>
     <string name="settings_server_connection_section">Server Connection</string>
+    <string name="settings_server_address_valitation_error">Incorrect server IP</string>
+    <string name="settings_server_port_valitation_error">Incorrect server port</string>
 </resources>

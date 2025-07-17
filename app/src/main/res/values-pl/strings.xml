@@ -12,4 +12,6 @@
     <string name="settings_enable_sending_to_server">Włącz wysyłanie danych do serwera</string>
     <string name="settings_save_changes">Zapisz ustawienia</string>
     <string name="settings_server_connection_section">Połączenie z serwerem</string>
+    <string name="settings_server_address_valitation_error">Nieprawidłowy adres IP serwera</string>
+    <string name="settings_server_port_valitation_error">Nieprawidłowy port serwera</string>
 </resources>
