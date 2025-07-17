@@ -2,6 +2,7 @@ package pl.vrtechnology.fboxtester.settings;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +34,10 @@ public class SettingsActivity extends AppCompatActivity {
         ActivitySettingsBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_settings);
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
+
+        viewModel.getSettingsSaveToastEvent().observe(this, event -> {
+            Toast.makeText(this, R.string.settings_settings_saved_toast, Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override

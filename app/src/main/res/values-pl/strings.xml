@@ -14,4 +14,5 @@
     <string name="settings_server_connection_section">Połączenie z serwerem</string>
     <string name="settings_server_address_valitation_error">Nieprawidłowy adres IP serwera</string>
     <string name="settings_server_port_valitation_error">Nieprawidłowy port serwera</string>
+    <string name="settings_settings_saved_toast">Ustawienia zapisane.</string>
 </resources>

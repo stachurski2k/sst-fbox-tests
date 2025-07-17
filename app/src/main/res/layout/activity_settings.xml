@@ -89,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:enabled="@{viewModel.canSaveSettings}"
-                android:text="@string/settings_save_changes" />
+                android:text="@string/settings_save_changes"
+                android:onClick="@{() -> viewModel.saveSettings()}"/>
         </LinearLayout>
     </ScrollView>
 </layout>

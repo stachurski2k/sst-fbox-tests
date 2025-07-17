@@ -31,6 +31,8 @@ public class SettingsViewModel extends ViewModel {
 
     @Getter
     private final MutableLiveData<Boolean> canSaveSettings = new MutableLiveData<>(false);
+    @Getter
+    private final MutableLiveData<Void> settingsSaveToastEvent = new MutableLiveData<>();
 
     @Inject
     SettingsViewModel(@NonNull SettingsRepository settingsRepository) {
@@ -73,12 +75,17 @@ public class SettingsViewModel extends ViewModel {
     }
 
     public void saveSettings() {
-        if (canSaveSettings.getValue() != null && canSaveSettings.getValue()) {
+        if (Boolean.TRUE.equals(canSaveSettings.getValue())) {
             settingsRepository.setServerAddress(serverAddress.getValue());
-            settingsRepository.setServerPort(Integer.parseInt(serverPort.getValue()));
+            settingsRepository.setServerPort(Integer.parseInt(Objects.requireNonNull(serverPort.getValue())));
+            settingsRepository.setAutoSendDataEnabled(Boolean.TRUE.equals(serverSendDataEnabled.getValue()));
 
             serverAddress.setValue(settingsRepository.getServerAddress());
             serverPort.setValue(String.valueOf(settingsRepository.getServerPort()));
+            serverSendDataEnabled.setValue(settingsRepository.isAutoSendDataEnabled());
+
+            validateData();
+            settingsSaveToastEvent.setValue(null);
         }
     }
 }
