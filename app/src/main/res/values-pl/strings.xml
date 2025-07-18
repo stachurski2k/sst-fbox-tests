@@ -16,4 +16,11 @@
     <string name="settings_server_port_valitation_error">Nieprawidłowy port serwera</string>
     <string name="settings_settings_saved_toast">Ustawienia zapisane.</string>
     <string name="session_manager_title">Menedżer sesji</string>
+    <string name="log_wall_correct">Poprawnie</string>
+    <string name="log_wall_displacement">Przesunięcie</string>
+    <string name="log_wall_other_error">Inny błąd</string>
+    <string name="log_thrower_excitation">Wzbudzenie</string>
+    <string name="log_thrower_no_launch">Brak wystrzału</string>
+    <string name="log_thrower_other">Inny błąd</string>
+    <string name="log_thrower_correct">Poprawnie</string>
 </resources>

@@ -15,4 +15,11 @@
     <string name="settings_server_port_valitation_error">Incorrect server port</string>
     <string name="settings_settings_saved_toast">Settings saved.</string>
     <string name="session_manager_title">Session Manager</string>
+    <string name="log_wall_correct">Correct</string>
+    <string name="log_wall_displacement">Displacement</string>
+    <string name="log_wall_other_error">Other error</string>
+    <string name="log_thrower_excitation">Excitation</string>
+    <string name="log_thrower_no_launch">No launch</string>
+    <string name="log_thrower_other">Other Error</string>
+    <string name="log_thrower_correct">Correct</string>
 </resources>

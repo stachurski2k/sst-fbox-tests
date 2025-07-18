@@ -47,6 +47,7 @@ dependencies {
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
     implementation(libs.material)
+    implementation(libs.jackson.dataformat.csv)
 
     implementation(libs.appcompat)
     implementation(libs.material)
