@@ -1,7 +1,6 @@
 package pl.silsense.fboxtester.session;
 
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -10,110 +9,51 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import javax.inject.Inject;
 
 public class SessionRepository {
 
-    private static final String FILE_NAME = "sessions.txt";
+    private static final String LAST_SESSION_FILE = "last_session.txt";
     private static final String TAG = "SessionRepository";
     private final Context context;
 
+    @Inject
     public SessionRepository(Context context) {
         this.context = context;
     }
 
-    public File createSession(String sessionName) {
-        if (sessionName == null || sessionName.isEmpty()) {
-            throw new IllegalArgumentException("Session name cannot be empty.");
+    public File getLastSession() {
+        File file = new File(context.getFilesDir(), LAST_SESSION_FILE);
+        if (!file.exists()) {
+            Log.w(TAG, "Last session file does not exist.");
+            return null;
         }
 
-        if (sessionExists(sessionName)) {
-            throw new IllegalArgumentException("A session with this name already exists.");
-        }
-
-        File downloadsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
-        if (downloadsDir == null) {
-            throw new IllegalStateException("Unable to access the Downloads directory.");
-        }
-
-        File sessionFile = new File(downloadsDir, sessionName + ".csv");
-        try {
-            if (sessionFile.createNewFile()) {
-                addSessionToFile(sessionName, sessionFile.getAbsolutePath());
-            }
-        } catch (IOException e) {
-            Log.e(TAG, "Error while creating session: " + e.getMessage(), e);
-        }
-
-        return sessionFile;
-    }
-
-    public void importSession(File sessionFile) {
-        if (sessionFile == null || !sessionFile.exists()) {
-            throw new IllegalArgumentException("Session file does not exist.");
-        }
-
-        String sessionName = sessionFile.getName().replace(".csv", "");
-
-        if (!sessionExists(sessionName)) {
-            addSessionToFile(sessionName, sessionFile.getAbsolutePath());
-        }
-    }
-
-    public List<String> getSessions() {
-        List<String> sessionNames = new ArrayList<>();
-        try (FileInputStream fis = context.openFileInput(FILE_NAME);
+        try (FileInputStream fis = context.openFileInput(LAST_SESSION_FILE);
              BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String sessionName = line.split(",")[0];
-                sessionNames.add(sessionName);
+            String lastSessionPath = reader.readLine();
+            if (lastSessionPath != null) {
+                return new File(lastSessionPath);
             }
         } catch (IOException e) {
-            Log.e(TAG, "Error while reading sessions: " + e.getMessage(), e);
+            Log.e(TAG, "Error while reading last session: " + e.getMessage(), e);
         }
-        return sessionNames;
-    }
 
-    public String getSession(String sessionName) {
-        try (FileInputStream fis = context.openFileInput(FILE_NAME);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts[0].equals(sessionName)) {
-                    return parts[1];
-                }
-            }
-        } catch (IOException e) {
-            Log.e(TAG, "Error while fetching session: " + e.getMessage(), e);
-        }
         return null;
     }
 
-    private void addSessionToFile(String sessionName, String sessionPath) {
-        try (FileOutputStream fos = context.openFileOutput(FILE_NAME, Context.MODE_APPEND)) {
-            String sessionData = sessionName + "," + sessionPath + "\n";
-            fos.write(sessionData.getBytes());
-        } catch (IOException e) {
-            Log.e(TAG, "Error while adding session to file: " + e.getMessage(), e);
+    public void setLastSession(File sessionFile) {
+        if (sessionFile == null || !sessionFile.exists()) {
+            throw new IllegalArgumentException("Invalid session file.");
         }
-    }
 
-    private boolean sessionExists(String sessionName) {
-        try (FileInputStream fis = context.openFileInput(FILE_NAME);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String existingSessionName = line.split(",")[0];
-                if (existingSessionName.equals(sessionName)) {
-                    return true;
-                }
-            }
+        String sessionPath = sessionFile.getAbsolutePath();
+
+        try (FileOutputStream fos = context.openFileOutput(LAST_SESSION_FILE, Context.MODE_PRIVATE)) {
+            fos.write(sessionPath.getBytes());
         } catch (IOException e) {
-            Log.e(TAG, "Error while checking session existence: " + e.getMessage(), e);
+            Log.e(TAG, "Error while updating last session: " + e.getMessage(), e);
         }
-        return false;
     }
 }
