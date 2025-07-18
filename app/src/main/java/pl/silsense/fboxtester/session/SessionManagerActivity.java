@@ -58,6 +58,15 @@ public class SessionManagerActivity extends AppCompatActivity {
                 }
         );
 
+        viewModel.getOpenFolderPickerEvent().observe(this, actionEvent -> {
+            if (!actionEvent.isHandled()) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                Uri downloadsUri = Uri.parse("content://com.android.externalstorage.documents/document/primary%3ADownloads");
+                intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri);
+                pickFileLauncher.launch(intent);
+            }
+        });
+
         viewModel.getOpenFilePickerEvent().observe(this, actionEvent -> {
             if (!actionEvent.isHandled()) {
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);

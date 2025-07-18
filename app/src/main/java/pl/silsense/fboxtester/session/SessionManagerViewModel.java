@@ -20,6 +20,8 @@ public class SessionManagerViewModel extends ViewModel {
     @Getter
     private final MutableLiveData<ActionEvent> openNewSessionDialogEvent = new MutableLiveData<>(ActionEvent.HANDLED);
     @Getter
+    private final MutableLiveData<ActionEvent> openFolderPickerEvent = new MutableLiveData<>(ActionEvent.HANDLED);
+    @Getter
     private final MutableLiveData<ActionEvent> openFilePickerEvent = new MutableLiveData<>(ActionEvent.HANDLED);
 
     @Inject
@@ -29,7 +31,8 @@ public class SessionManagerViewModel extends ViewModel {
     }
 
     public void openNewSessionDialog() {
-        openNewSessionDialogEvent.setValue(new ActionEvent());
+        //openNewSessionDialogEvent.setValue(new ActionEvent());
+        openFolderPickerEvent.setValue(new ActionEvent());
     }
 
     public void openImportSessionDialog() {
