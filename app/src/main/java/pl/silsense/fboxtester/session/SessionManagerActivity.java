@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.silsense.fboxtester.R;
 import pl.silsense.fboxtester.databinding.ActivitySessionManagerBinding;
+import pl.silsense.fboxtester.logger.LoggerActivity;
 
 @AndroidEntryPoint
 public class SessionManagerActivity extends AppCompatActivity {
@@ -102,9 +103,9 @@ public class SessionManagerActivity extends AppCompatActivity {
         viewModel.getStartLoggerActivity().observe(this, event -> {
             if (event.handle()) {
                 Session session = event.getContent();
-                //Intent intent = new Intent(this, LoggerActivity.class);
+                Intent intent = new Intent(this, LoggerActivity.class);
                 //intent.putExtra();
-                //startActivity(intent);
+                startActivity(intent);
             }
         });
     }

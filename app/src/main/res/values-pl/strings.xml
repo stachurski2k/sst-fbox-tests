@@ -26,4 +26,5 @@
     <string name="session_manager_directory_selection_error">Błąd podczas wyboru folderu!</string>
     <string name="session_manager_file_selection_error">Błąd podczas wyboru pliku!</string>
     <string name="session_manager_common_error">Wystąpił błąd!</string>
+    <string name="logger_title">Raportowanie błędów</string>
 </resources>

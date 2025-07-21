@@ -17,6 +17,6 @@ public class ObjectEvent<T> extends ConsumableEvent {
     }
 
     public static <C> ObjectEvent<C> handled() {
-        return new ObjectEvent<>(null);
+        return new ObjectEvent<>(null, true);
     }
 }
