@@ -36,7 +36,9 @@ public class SettingsActivity extends AppCompatActivity {
         binding.setLifecycleOwner(this);
 
         viewModel.getSettingsSaveToastEvent().observe(this, event -> {
-            Toast.makeText(this, R.string.settings_settings_saved_toast, Toast.LENGTH_SHORT).show();
+            if(event.handle()) {
+                Toast.makeText(this, R.string.settings_settings_saved_toast, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

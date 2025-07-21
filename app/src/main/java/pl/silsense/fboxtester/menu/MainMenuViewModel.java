@@ -7,29 +7,30 @@ import androidx.lifecycle.ViewModel;
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import pl.silsense.fboxtester.util.ConsumableEvent;
 
 @HiltViewModel
 public class MainMenuViewModel extends ViewModel {
 
-    private final MutableLiveData<Void> openSessionManagerEvent = new MutableLiveData<>();
-    private final MutableLiveData<Void> openSettingsEvent = new MutableLiveData<>();
+    private final MutableLiveData<ConsumableEvent> openSessionManagerEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
+    private final MutableLiveData<ConsumableEvent> openSettingsEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
 
     @Inject
     public MainMenuViewModel() {}
 
-    public LiveData<Void> getOpenSessionManagerEvent() {
+    public LiveData<ConsumableEvent> getOpenSessionManagerEvent() {
         return openSessionManagerEvent;
     }
 
-    public LiveData<Void> getOpenSettingsEvent() {
+    public LiveData<ConsumableEvent> getOpenSettingsEvent() {
         return openSettingsEvent;
     }
 
     public void openSessionManager() {
-        openSessionManagerEvent.setValue(null);
+        openSessionManagerEvent.setValue(new ConsumableEvent());
     }
 
     public void openSettings() {
-        openSettingsEvent.setValue(null);
+        openSettingsEvent.setValue(new ConsumableEvent());
     }
 }

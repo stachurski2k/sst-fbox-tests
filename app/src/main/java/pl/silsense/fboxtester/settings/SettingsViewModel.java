@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import lombok.Getter;
+import pl.silsense.fboxtester.util.ConsumableEvent;
 
 @HiltViewModel
 public class SettingsViewModel extends ViewModel {
@@ -32,7 +33,7 @@ public class SettingsViewModel extends ViewModel {
     @Getter
     private final MutableLiveData<Boolean> canSaveSettings = new MutableLiveData<>(false);
     @Getter
-    private final MutableLiveData<Void> settingsSaveToastEvent = new MutableLiveData<>();
+    private final MutableLiveData<ConsumableEvent> settingsSaveToastEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
 
     @Inject
     SettingsViewModel(@NonNull SettingsRepository settingsRepository) {
@@ -85,7 +86,7 @@ public class SettingsViewModel extends ViewModel {
             serverSendDataEnabled.setValue(settingsRepository.isAutoSendDataEnabled());
 
             validateData();
-            settingsSaveToastEvent.setValue(null);
+            settingsSaveToastEvent.setValue(new ConsumableEvent());
         }
     }
 }

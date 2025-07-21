@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import lombok.Getter;
-import pl.silsense.fboxtester.util.ActionEvent;
+import pl.silsense.fboxtester.util.ConsumableEvent;
 
 @HiltViewModel
 public class SessionManagerViewModel extends ViewModel {
@@ -18,11 +18,11 @@ public class SessionManagerViewModel extends ViewModel {
     @Getter
     private final MutableLiveData<Boolean> lastSessionExist;
     @Getter
-    private final MutableLiveData<ActionEvent> openNewSessionDialogEvent = new MutableLiveData<>(ActionEvent.HANDLED);
+    private final MutableLiveData<ConsumableEvent> openNewSessionDialogEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
     @Getter
-    private final MutableLiveData<ActionEvent> openFolderPickerEvent = new MutableLiveData<>(ActionEvent.HANDLED);
+    private final MutableLiveData<ConsumableEvent> openFolderPickerEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
     @Getter
-    private final MutableLiveData<ActionEvent> openFilePickerEvent = new MutableLiveData<>(ActionEvent.HANDLED);
+    private final MutableLiveData<ConsumableEvent> openFilePickerEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
 
     @Inject
     public SessionManagerViewModel(@NonNull SessionRepository sessionRepository) {
@@ -32,11 +32,11 @@ public class SessionManagerViewModel extends ViewModel {
 
     public void openNewSessionDialog() {
         //openNewSessionDialogEvent.setValue(new ActionEvent());
-        openFolderPickerEvent.setValue(new ActionEvent());
+        openFolderPickerEvent.setValue(new ConsumableEvent());
     }
 
     public void openImportSessionDialog() {
-        openFilePickerEvent.setValue(new ActionEvent());
+        openFilePickerEvent.setValue(new ConsumableEvent());
     }
 
     public void continueLastSession() {

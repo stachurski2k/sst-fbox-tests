@@ -36,12 +36,16 @@ public class MainMenuActivity extends AppCompatActivity {
         ActivityMainMenuBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main_menu);
         binding.setViewModel(viewModel);
 
-        viewModel.getOpenSettingsEvent().observe(this, unused -> {
-            startActivity(SettingsActivity.class);
+        viewModel.getOpenSettingsEvent().observe(this, event -> {
+            if(event.handle()) {
+                startActivity(SettingsActivity.class);
+            }
         });
 
-        viewModel.getOpenSessionManagerEvent().observe(this, unused -> {
-            startActivity(SessionManagerActivity.class);
+        viewModel.getOpenSessionManagerEvent().observe(this, event -> {
+            if(event.handle()) {
+                startActivity(SessionManagerActivity.class);
+            }
         });
     }
 
