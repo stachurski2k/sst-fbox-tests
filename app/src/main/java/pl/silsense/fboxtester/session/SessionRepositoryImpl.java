@@ -88,9 +88,9 @@ class SessionRepositoryImpl implements SessionRepository {
              BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
             String uriString = reader.readLine();
             if (uriString != null) {
-                DocumentFile directory = DocumentFile.fromTreeUri(context, android.net.Uri.parse(uriString));
-                if (directory != null && directory.exists()) {
-                    return Optional.of(new SessionImpl(directory.getName(), directory));
+                DocumentFile sessionFile = DocumentFile.fromSingleUri(context, android.net.Uri.parse(uriString));
+                if (sessionFile != null && sessionFile.exists()) {
+                    return Optional.of(new SessionImpl(sessionFile.getName(), sessionFile));
                 }
             }
         } catch (IOException e) {

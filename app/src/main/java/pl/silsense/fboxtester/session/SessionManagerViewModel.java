@@ -38,7 +38,7 @@ public class SessionManagerViewModel extends ViewModel {
         this.lastSessionExist = new MutableLiveData<>(sessionRepository.getLastSession().isPresent());
     }
 
-    public void openNewSessionDialog() {
+    public void openCreateNewSessionDialog() {
         if(sessionRepository.getDefaultSessionDirectory().isEmpty()) {
             openDirectoryPickerEvent.setValue(new ConsumableEvent());
         } else {
