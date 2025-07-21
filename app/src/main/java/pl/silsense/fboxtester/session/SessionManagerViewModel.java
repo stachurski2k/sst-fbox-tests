@@ -47,6 +47,8 @@ public class SessionManagerViewModel extends ViewModel {
                 commonErrorToastEvent.setValue(new ConsumableEvent());
                 return;
             }
+            sessionRepository.setLastSession(session.get());
+            lastSessionExist.setValue(sessionRepository.getLastSession().isPresent());
             startLoggerActivity.setValue(new ObjectEvent<>(session.get()));
         }
     }
@@ -62,6 +64,8 @@ public class SessionManagerViewModel extends ViewModel {
     void onFileSelected(@NonNull DocumentFile file) {
         try {
             var imported = sessionRepository.importSessionFromFile(file);
+            sessionRepository.setLastSession(imported);
+            lastSessionExist.setValue(sessionRepository.getLastSession().isPresent());
             startLoggerActivity.setValue(new ObjectEvent<>(imported));
         } catch (Exception exception) {
             commonErrorToastEvent.setValue(new ConsumableEvent());

@@ -82,15 +82,20 @@ class SessionRepositoryImpl implements SessionRepository {
     public Optional<Session> getLastSession() {
         File file = new File(context.getFilesDir(), LAST_SESSION_FILE);
         if (!file.exists()) {
+            Log.e(TAG, "getLastSession: LAST_SESSION_FILE NOT EXISTS");
             return Optional.empty();
         }
-        try (FileInputStream fis = new FileInputStream(file);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
+        try (FileInputStream fis = new FileInputStream(file); BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
             String uriString = reader.readLine();
             if (uriString != null) {
-                DocumentFile sessionFile = DocumentFile.fromSingleUri(context, android.net.Uri.parse(uriString));
-                if (sessionFile != null && sessionFile.exists()) {
-                    return Optional.of(new SessionImpl(sessionFile.getName(), sessionFile));
+                try {
+                    DocumentFile sessionFile = DocumentFile.fromSingleUri(context, android.net.Uri.parse(uriString));
+                    if (sessionFile != null && sessionFile.exists()) {
+                        return Optional.of(new SessionImpl(sessionFile.getName(), sessionFile));
+                    }
+                } catch (SecurityException e) {
+                    Log.w(TAG, "Lost permission for last session URI. Deleting last session file.", e);
+                    file.delete();
                 }
             }
         } catch (IOException e) {

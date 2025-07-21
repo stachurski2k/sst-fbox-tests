@@ -67,6 +67,7 @@ public class SessionManagerActivity extends AppCompatActivity {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Uri uri = result.getData().getData();
                         if (uri != null) {
+                            getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                             DocumentFile file = DocumentFile.fromSingleUri(this, uri);
                             if(file != null && file.isFile()) {
                                 viewModel.onFileSelected(file);
