@@ -90,6 +90,8 @@ public class SessionManagerActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("*/*");
+                String[] mimeTypes = {"text/csv", "text/comma-separated-values", "application/csv"};
+                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
                 pickFileLauncher.launch(intent);
             }
         });

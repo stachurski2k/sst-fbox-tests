@@ -50,10 +50,7 @@ public class LoggerActivity extends AppCompatActivity {
         binding.setLifecycleOwner(this);
 
         viewModel.getSession().observe(this, session -> {
-            Log.d("LoggerActivity", "onCreate: Session set!");
-            Log.d("LoggerActivity", "onCreate: Session: " + session);
             if(session != null) {
-                Log.d("LoggerActivity", "onCreate: Session: " + session.getFile());
                 binding.textViewLoggerTest.setText(session.getFile().getName());
             }
         });
