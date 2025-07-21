@@ -103,7 +103,7 @@ class SessionRepositoryImpl implements SessionRepository {
     public void setLastSession(@NonNull Session session) {
         File file = new File(context.getFilesDir(), LAST_SESSION_FILE);
         try (FileOutputStream fos = new FileOutputStream(file)) {
-            fos.write(session.getDirectory().getUri().toString().getBytes());
+            fos.write(session.getFile().getUri().toString().getBytes());
         } catch (IOException e) {
             Log.e(TAG, "Error writing last session", e);
         }
@@ -111,8 +111,17 @@ class SessionRepositoryImpl implements SessionRepository {
 
     @NonNull
     @Override
-    public Session importSessionFromFile(@NonNull DocumentFile file) throws Exception {
-        // To be implemented
-        return null;
+    public Session importSessionFromFile(@NonNull DocumentFile file) throws IOException {
+        if (!file.exists() || !file.isFile()) {
+            throw new IOException("File does not exist or is not a file.");
+        }
+        String fileName = file.getName();
+        if (fileName == null) {
+            throw new IllegalArgumentException("File name is null.");
+        }
+        String sessionName = fileName.endsWith(".csv") ? fileName.substring(0, fileName.length() - 4) : fileName;
+        Session session = new SessionImpl(sessionName, file);
+        setLastSession(session);
+        return session;
     }
 }

@@ -5,11 +5,11 @@ import androidx.documentfile.provider.DocumentFile;
 class SessionImpl implements Session {
 
     private final String name;
-    private final DocumentFile directory;
+    private final DocumentFile file;
 
     public SessionImpl(String name, DocumentFile file) {
         this.name = name;
-        this.directory = file;
+        this.file = file;
     }
 
     @Override
@@ -18,7 +18,7 @@ class SessionImpl implements Session {
     }
 
     @Override
-    public DocumentFile getDirectory() {
-        return directory;
+    public DocumentFile getFile() {
+        return file;
     }
 }

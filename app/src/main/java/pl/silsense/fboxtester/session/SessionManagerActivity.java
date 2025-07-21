@@ -104,7 +104,7 @@ public class SessionManagerActivity extends AppCompatActivity {
             if (event.handle()) {
                 Session session = event.getContent();
                 Intent intent = new Intent(this, LoggerActivity.class);
-                //intent.putExtra();
+                intent.putExtra(LoggerActivity.EXTRA_SESSION_FILE_URI, session.getFile().getUri());
                 startActivity(intent);
             }
         });
