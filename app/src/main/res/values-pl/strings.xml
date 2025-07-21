@@ -23,4 +23,6 @@
     <string name="log_thrower_no_launch">Brak wystrzału</string>
     <string name="log_thrower_other">Inny błąd</string>
     <string name="log_thrower_correct">Poprawnie</string>
+    <string name="session_manager_directory_selection_error">Błąd podczas wyboru folderu!</string>
+    <string name="session_manager_file_selection_error">Błąd podczas wyboru pliku!</string>
 </resources>

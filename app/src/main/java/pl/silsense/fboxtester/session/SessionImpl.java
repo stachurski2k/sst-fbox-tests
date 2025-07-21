@@ -7,9 +7,9 @@ class SessionImpl implements Session {
     private final String name;
     private final DocumentFile directory;
 
-    public SessionImpl(String name, DocumentFile directory) {
+    public SessionImpl(String name, DocumentFile file) {
         this.name = name;
-        this.directory = directory;
+        this.directory = file;
     }
 
     @Override

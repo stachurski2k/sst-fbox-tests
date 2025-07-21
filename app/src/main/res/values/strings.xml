@@ -22,4 +22,6 @@
     <string name="log_thrower_no_launch">No launch</string>
     <string name="log_thrower_other">Other Error</string>
     <string name="log_thrower_correct">Correct</string>
+    <string name="session_manager_directory_selection_error">Failed to select directory!</string>
+    <string name="session_manager_file_selection_error">Failed to select file!</string>
 </resources>

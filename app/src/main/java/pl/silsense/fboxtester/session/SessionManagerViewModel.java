@@ -1,14 +1,18 @@
 package pl.silsense.fboxtester.session;
 
 import androidx.annotation.NonNull;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import java.time.LocalDateTime;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import lombok.Getter;
 import pl.silsense.fboxtester.util.ConsumableEvent;
+import pl.silsense.fboxtester.util.ObjectEvent;
 
 @HiltViewModel
 public class SessionManagerViewModel extends ViewModel {
@@ -20,9 +24,11 @@ public class SessionManagerViewModel extends ViewModel {
     @Getter
     private final MutableLiveData<ConsumableEvent> openNewSessionDialogEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
     @Getter
-    private final MutableLiveData<ConsumableEvent> openFolderPickerEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
+    private final MutableLiveData<ConsumableEvent> openDirectoryPickerEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
     @Getter
     private final MutableLiveData<ConsumableEvent> openFilePickerEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
+    @Getter
+    private final MutableLiveData<ObjectEvent<Session>> startLoggerActivity = new MutableLiveData<>(ObjectEvent.handled());
 
     @Inject
     public SessionManagerViewModel(@NonNull SessionRepository sessionRepository) {
@@ -31,8 +37,19 @@ public class SessionManagerViewModel extends ViewModel {
     }
 
     public void openNewSessionDialog() {
-        //openNewSessionDialogEvent.setValue(new ActionEvent());
-        openFolderPickerEvent.setValue(new ConsumableEvent());
+        if(sessionRepository.getDefaultSessionDirectory().isEmpty()) {
+            openDirectoryPickerEvent.setValue(new ConsumableEvent());
+        } else {
+            var session = sessionRepository.createNewSession(LocalDateTime.now().toString());
+            if(session.isEmpty()) {
+                // error toast
+            }
+            // start activity
+        }
+    }
+
+    void onDirectorySelected(@NonNull DocumentFile directory) {
+        sessionRepository.setDefaultSessionDirectory(directory);
     }
 
     public void openImportSessionDialog() {
@@ -40,8 +57,9 @@ public class SessionManagerViewModel extends ViewModel {
     }
 
     public void continueLastSession() {
-        if(Boolean.TRUE.equals(lastSessionExist.getValue())) {
-            // folder picker?
+        if(sessionRepository.getLastSession().isPresent()) {
+            // get last session
+            // start activity
         }
     }
 }

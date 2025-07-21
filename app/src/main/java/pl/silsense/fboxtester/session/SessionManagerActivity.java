@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -49,7 +50,11 @@ public class SessionManagerActivity extends AppCompatActivity {
                         if (uri != null) {
                             getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                             DocumentFile folder = DocumentFile.fromTreeUri(this, uri);
-                            //viewModel.onFolderSelected(folder);
+                            if(folder != null && folder.isDirectory()) {
+                                viewModel.onDirectorySelected(folder);
+                            } else {
+                                Toast.makeText(this, R.string.session_manager_directory_selection_error, Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }
@@ -62,13 +67,17 @@ public class SessionManagerActivity extends AppCompatActivity {
                         Uri uri = result.getData().getData();
                         if (uri != null) {
                             DocumentFile file = DocumentFile.fromSingleUri(this, uri);
-                            //viewModel.onFileSelected(file);
+                            if(file != null && file.isFile()) {
+                                //viewModel.onFileSelected(file);
+                            } else {
+                                Toast.makeText(this, R.string.session_manager_directory_selection_error, Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }
         );
 
-        viewModel.getOpenFolderPickerEvent().observe(this, actionEvent -> {
+        viewModel.getOpenDirectoryPickerEvent().observe(this, actionEvent -> {
             if (!actionEvent.isHandled()) {
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
                 pickFolderLauncher.launch(intent);

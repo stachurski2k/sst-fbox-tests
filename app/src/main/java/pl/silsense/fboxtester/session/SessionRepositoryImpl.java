@@ -68,9 +68,9 @@ class SessionRepositoryImpl implements SessionRepository {
             throw new IllegalStateException("Default session directory not set or does not exist.");
         }
 
-        DocumentFile sessionDir = defaultDirectory.get().createDirectory(sessionName);
-        if (sessionDir != null) {
-            Session session = new SessionImpl(sessionName, sessionDir);
+        DocumentFile sessionFile = defaultDirectory.get().createFile("text/csv", sessionName + ".csv");
+        if (sessionFile != null) {
+            Session session = new SessionImpl(sessionName, sessionFile);
             setLastSession(session);
             return Optional.of(session);
         }
