@@ -1,22 +1,18 @@
 package pl.silsense.fboxtester.session;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
 import android.view.MenuItem;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.lifecycle.ViewModelProvider;
-
-import java.io.File;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.silsense.fboxtester.R;
@@ -25,11 +21,11 @@ import pl.silsense.fboxtester.databinding.ActivitySessionManagerBinding;
 @AndroidEntryPoint
 public class SessionManagerActivity extends AppCompatActivity {
 
+    private ActivityResultLauncher<Intent> pickFolderLauncher;
     private ActivityResultLauncher<Intent> pickFileLauncher;
-    private ActivityResultLauncher<String> permissionLauncher;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session_manager);
 
@@ -45,14 +41,28 @@ public class SessionManagerActivity extends AppCompatActivity {
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
+        pickFolderLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Uri uri = result.getData().getData();
+                        if (uri != null) {
+                            getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                            DocumentFile folder = DocumentFile.fromTreeUri(this, uri);
+                            //viewModel.onFolderSelected(folder);
+                        }
+                    }
+                }
+        );
+
         pickFileLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Uri uri = result.getData().getData();
                         if (uri != null) {
-                            File file = new File(getRealPathFromURI(uri));
-                            // viewModel.onFileSelected(file);
+                            DocumentFile file = DocumentFile.fromSingleUri(this, uri);
+                            //viewModel.onFileSelected(file);
                         }
                     }
                 }
@@ -61,18 +71,15 @@ public class SessionManagerActivity extends AppCompatActivity {
         viewModel.getOpenFolderPickerEvent().observe(this, actionEvent -> {
             if (!actionEvent.isHandled()) {
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-                Uri downloadsUri = Uri.parse("content://com.android.externalstorage.documents/document/primary%3ADownloads");
-                intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri);
-                pickFileLauncher.launch(intent);
+                pickFolderLauncher.launch(intent);
             }
         });
 
         viewModel.getOpenFilePickerEvent().observe(this, actionEvent -> {
             if (!actionEvent.isHandled()) {
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                intent.setType("text/csv");
-                Uri downloadsUri = Uri.parse("content://com.android.externalstorage.documents/document/primary%3ADownloads");
-                intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("*/*");
                 pickFileLauncher.launch(intent);
             }
         });
@@ -85,18 +92,5 @@ public class SessionManagerActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private String getRealPathFromURI(Uri uri) {
-        String[] projection = {DocumentsContract.Document.COLUMN_DISPLAY_NAME};
-        String path = null;
-        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
-        if (cursor != null) {
-            int columnIndex = cursor.getColumnIndexOrThrow(DocumentsContract.Document.COLUMN_DISPLAY_NAME);
-            cursor.moveToFirst();
-            path = cursor.getString(columnIndex);
-            cursor.close();
-        }
-        return path;
     }
 }
