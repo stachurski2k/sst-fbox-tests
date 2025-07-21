@@ -24,4 +24,5 @@
     <string name="log_thrower_correct">Correct</string>
     <string name="session_manager_directory_selection_error">Failed to select directory!</string>
     <string name="session_manager_file_selection_error">Failed to select file!</string>
+    <string name="session_manager_common_error">Error! Something went wrong.</string>
 </resources>

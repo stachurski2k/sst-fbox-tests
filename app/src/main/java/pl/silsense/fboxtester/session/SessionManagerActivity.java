@@ -68,7 +68,7 @@ public class SessionManagerActivity extends AppCompatActivity {
                         if (uri != null) {
                             DocumentFile file = DocumentFile.fromSingleUri(this, uri);
                             if(file != null && file.isFile()) {
-                                //viewModel.onFileSelected(file);
+                                viewModel.onFileSelected(file);
                             } else {
                                 Toast.makeText(this, R.string.session_manager_directory_selection_error, Toast.LENGTH_SHORT).show();
                             }
@@ -78,18 +78,33 @@ public class SessionManagerActivity extends AppCompatActivity {
         );
 
         viewModel.getOpenDirectoryPickerEvent().observe(this, actionEvent -> {
-            if (!actionEvent.isHandled()) {
+            if (actionEvent.handle()) {
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
                 pickFolderLauncher.launch(intent);
             }
         });
 
         viewModel.getOpenFilePickerEvent().observe(this, actionEvent -> {
-            if (!actionEvent.isHandled()) {
+            if (actionEvent.handle()) {
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("*/*");
                 pickFileLauncher.launch(intent);
+            }
+        });
+
+        viewModel.getCommonErrorToastEvent().observe(this, event -> {
+            if (event.handle()) {
+                Toast.makeText(this, R.string.session_manager_common_error, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        viewModel.getStartLoggerActivity().observe(this, event -> {
+            if (event.handle()) {
+                Session session = event.getContent();
+                //Intent intent = new Intent(this, LoggerActivity.class);
+                //intent.putExtra();
+                //startActivity(intent);
             }
         });
     }

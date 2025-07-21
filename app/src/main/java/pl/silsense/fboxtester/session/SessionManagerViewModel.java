@@ -29,6 +29,8 @@ public class SessionManagerViewModel extends ViewModel {
     private final MutableLiveData<ConsumableEvent> openFilePickerEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
     @Getter
     private final MutableLiveData<ObjectEvent<Session>> startLoggerActivity = new MutableLiveData<>(ObjectEvent.handled());
+    @Getter
+    private final MutableLiveData<ConsumableEvent> commonErrorToastEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
 
     @Inject
     public SessionManagerViewModel(@NonNull SessionRepository sessionRepository) {
@@ -42,9 +44,10 @@ public class SessionManagerViewModel extends ViewModel {
         } else {
             var session = sessionRepository.createNewSession(LocalDateTime.now().toString());
             if(session.isEmpty()) {
-                // error toast
+                commonErrorToastEvent.setValue(new ConsumableEvent());
+                return;
             }
-            // start activity
+            startLoggerActivity.setValue(new ObjectEvent<>(session.get()));
         }
     }
 
@@ -56,10 +59,16 @@ public class SessionManagerViewModel extends ViewModel {
         openFilePickerEvent.setValue(new ConsumableEvent());
     }
 
-    public void continueLastSession() {
-        if(sessionRepository.getLastSession().isPresent()) {
-            // get last session
-            // start activity
+    void onFileSelected(@NonNull DocumentFile file) {
+        try {
+            var imported = sessionRepository.importSessionFromFile(file);
+            startLoggerActivity.setValue(new ObjectEvent<>(imported));
+        } catch (Exception exception) {
+            commonErrorToastEvent.setValue(new ConsumableEvent());
         }
+    }
+
+    public void continueLastSession() {
+        sessionRepository.getLastSession().ifPresent(session -> startLoggerActivity.setValue(new ObjectEvent<>(session)));
     }
 }
