@@ -17,6 +17,6 @@ public class SessionRepositoryModule {
     @Provides
     @Singleton
     public SessionRepository provideSessionRepository(@ApplicationContext Context context) {
-        return new SessionRepository(context);
+        return new SessionRepositoryImpl(context);
     }
 }
