@@ -42,7 +42,7 @@ public class SessionManagerViewModel extends ViewModel {
         if(sessionRepository.getDefaultSessionDirectory().isEmpty()) {
             openDirectoryPickerEvent.setValue(new ConsumableEvent());
         } else {
-            var session = sessionRepository.createNewSession(LocalDateTime.now().toString());
+            var session = sessionRepository.createNewSession();
             if(session.isEmpty()) {
                 commonErrorToastEvent.setValue(new ConsumableEvent());
                 return;

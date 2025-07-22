@@ -3,7 +3,6 @@ package pl.silsense.fboxtester.logger;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -13,11 +12,16 @@ import androidx.databinding.DataBindingUtil;
 import androidx.documentfile.provider.DocumentFile;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.time.Instant;
 import java.util.Objects;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.silsense.fboxtester.R;
 import pl.silsense.fboxtester.databinding.ActivityLoggerBinding;
+import pl.silsense.fboxtester.log.Device;
+import pl.silsense.fboxtester.log.LogEntry;
+import pl.silsense.fboxtester.log.LogType;
+import pl.silsense.fboxtester.log.WallPosition;
 
 @AndroidEntryPoint
 public class LoggerActivity extends AppCompatActivity {
@@ -51,7 +55,7 @@ public class LoggerActivity extends AppCompatActivity {
 
         viewModel.getSession().observe(this, session -> {
             if(session != null) {
-                binding.textViewLoggerTest.setText(session.getFile().getName());
+                session.log(new LogEntry(Instant.now(), Device.THROWER_1, LogType.THROWER_CORRECT, new WallPosition(0.2f, 0.123f)));
             }
         });
     }

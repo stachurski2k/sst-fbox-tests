@@ -1,22 +1,31 @@
 package pl.silsense.fboxtester.session;
 
+import androidx.annotation.NonNull;
 import androidx.documentfile.provider.DocumentFile;
 
 import java.io.Serializable;
+import java.util.List;
+
+import pl.silsense.fboxtester.log.LogEntry;
 
 public interface Session extends Serializable {
 
+    @NonNull
     String getName();
 
+    @NonNull
     DocumentFile getFile();
+
+    void log(LogEntry logEntry);
+
+    @NonNull
+    List<LogEntry> readAll();
 }
 
 /*
 * TODO:
 * Przenieść stringi z Session manager activity do stringów w zasobach.
-* Zmienić system nazw plików sesji, ustalić jak działa nazwa sesji.
 * Ulepszyć widok w Main Menu.
-* Przebudować LogEntry itd.
 * Zrobić fragmenty dla loggera:
 * - menu wyboru elementu
 * - menu z nazwami błędów
