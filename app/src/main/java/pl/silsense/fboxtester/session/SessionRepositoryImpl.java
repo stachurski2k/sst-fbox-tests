@@ -72,7 +72,7 @@ class SessionRepositoryImpl implements SessionRepository {
         String sessionName = generateSessionName();
         DocumentFile sessionFile = defaultDirectory.get().createFile("text/csv", sessionName + ".csv");
         if (sessionFile != null) {
-            Session session = new SessionImpl(sessionName, sessionFile);
+            Session session = new SessionImpl(sessionName, sessionFile, context);
             setLastSession(session);
             return Optional.of(session);
         }
@@ -93,7 +93,7 @@ class SessionRepositoryImpl implements SessionRepository {
                 try {
                     DocumentFile sessionFile = DocumentFile.fromSingleUri(context, android.net.Uri.parse(uriString));
                     if (sessionFile != null && sessionFile.exists()) {
-                        return Optional.of(new SessionImpl(sessionFile.getName(), sessionFile));
+                        return Optional.of(new SessionImpl(sessionFile.getName(), sessionFile, context));
                     }
                 } catch (SecurityException e) {
                     Log.w(TAG, "Lost permission for last session URI. Deleting last session file.", e);
@@ -127,7 +127,7 @@ class SessionRepositoryImpl implements SessionRepository {
             throw new IllegalArgumentException("File name is null.");
         }
         String sessionName = fileName.endsWith(".csv") ? fileName.substring(0, fileName.length() - 4) : fileName;
-        Session session = new SessionImpl(sessionName, file);
+        Session session = new SessionImpl(sessionName, file, context);
         setLastSession(session);
         return session;
     }
