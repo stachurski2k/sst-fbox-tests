@@ -3,6 +3,7 @@ package pl.silsense.fboxtester.logger;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -11,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.documentfile.provider.DocumentFile;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Objects;
@@ -55,11 +55,26 @@ public class LoggerActivity extends AppCompatActivity {
                 showFragment(new DevicesFragment());
             }
         });
+
+        viewModel.getShowLogTypeFragment().observe(this, event -> {
+            if(event.handle()) {
+                var device = viewModel.getSelectedDevice().getValue();
+                if(device == null) {
+                    throw new IllegalStateException("Device is not selected!");
+                }
+                if(device.isWall()) {
+                    showFragment(new OptionsWallFragment());
+                } else {
+                    // TODO
+                }
+            }
+        });
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+            getSupportFragmentManager().popBackStack();
             getOnBackPressedDispatcher().onBackPressed();
             return true;
         }
@@ -67,8 +82,12 @@ public class LoggerActivity extends AppCompatActivity {
     }
 
     private void showFragment(@NonNull Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout_logger_fragment, fragment);
-        transaction.commit();
+        getSupportFragmentManager().popBackStack();
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(fragment, fragment.getTag())
+                .addToBackStack(null)
+                .commit();
+        Log.d("aaa", "showFragment: BACK STACK:" + getSupportFragmentManager().getBackStackEntryCount());
     }
 }

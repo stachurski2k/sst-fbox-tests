@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".session.SessionManagerActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
             name="viewModel"
-            type="pl.silsense.fboxtester.session.SessionManagerViewModel" />
+            type="pl.silsense.fboxtester.logger.LoggerViewModel" />
+        <import type="pl.silsense.fboxtester.log.LogType"/>
     </data>
 
     <LinearLayout
@@ -25,7 +23,8 @@
             android:text="@string/log_wall_correct"
             android:textSize="24sp"
             android:layout_marginBottom="16dp"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:onClick="@{() -> viewModel.selectLogType(LogType.WALL_CORRECT)}"/>
 
         <Button
             android:id="@+id/button12"
@@ -34,7 +33,8 @@
             android:text="@string/log_wall_displacement"
             android:textSize="24sp"
             android:layout_marginBottom="16dp"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:onClick="@{() -> viewModel.selectLogType(LogType.WALL_DISPLACEMENT)}"/>
 
         <Button
             android:id="@+id/button13"
@@ -42,7 +42,8 @@
             android:layout_height="wrap_content"
             android:text="@string/log_wall_other_error"
             android:textSize="24sp"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:onClick="@{() -> viewModel.selectLogType(LogType.WALL_OTHER)}"/>
 
     </LinearLayout>
 
