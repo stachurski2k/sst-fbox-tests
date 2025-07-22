@@ -29,4 +29,10 @@
     <string name="logger_title">Raportowanie błędów</string>
     <string name="stats_title">Statystyki</string>
     <string name="main_menu_stats">Statystyki</string>
+    <string name="session_manager_create_new_session_button">Stwórz nową sesję</string>
+    <string name="session_manager_create_new_session_description">Utwórz nową sesję. Zostaniesz poproszony o wybranie domyślnego folderu, a następnie zostanie utworzona nowa sesja.</string>
+    <string name="session_manager_import_session_button">Załaduj sesję z pliku</string>
+    <string name="session_manager_import_session_description">Załaduj istniejącą sesję z pliku. Zostaniesz poproszony o wybór pliku sesji z pamięci.</string>
+    <string name="session_manager_last_session_name">Ostatnia sesja: %s</string>
+    <string name="session_manager_continue_last_session_button">Kontynuuj ostatnią sesję</string>
 </resources>

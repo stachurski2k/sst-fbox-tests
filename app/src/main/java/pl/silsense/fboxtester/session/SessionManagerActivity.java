@@ -1,5 +1,6 @@
 package pl.silsense.fboxtester.session;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -110,6 +111,10 @@ public class SessionManagerActivity extends AppCompatActivity {
                 intent.putExtra(LoggerActivity.EXTRA_SESSION_FILE_URI, session.getFile().getUri());
                 startActivity(intent);
             }
+        });
+
+        viewModel.getLastSessionExist().observe(this, exists -> {
+            viewModel.getLastSession().ifPresent(session -> binding.textViewSessionManagerLastSessionDescription.setText(getResources().getString(R.string.session_manager_last_session_name, session.getName())));
         });
     }
 

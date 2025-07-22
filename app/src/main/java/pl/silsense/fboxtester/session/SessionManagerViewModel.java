@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import javax.inject.Inject;
 
@@ -74,5 +75,9 @@ public class SessionManagerViewModel extends ViewModel {
 
     public void continueLastSession() {
         sessionRepository.getLastSession().ifPresent(session -> startLoggerActivity.setValue(new ObjectEvent<>(session)));
+    }
+
+    public Optional<Session> getLastSession() {
+        return sessionRepository.getLastSession();
     }
 }

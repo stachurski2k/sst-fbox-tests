@@ -28,4 +28,10 @@
     <string name="logger_title">Logger</string>
     <string name="stats_title">Statistics</string>
     <string name="main_menu_stats">Statistics</string>
+    <string name="session_manager_create_new_session_button">Create new session</string>
+    <string name="session_manager_create_new_session_description">Create a new session. You will be prompted to choose the default folder, and then a new session will be created.</string>
+    <string name="session_manager_import_session_button">Import session from file</string>
+    <string name="session_manager_import_session_description">Load an existing session from a file. You will be prompted to select a session file from storage.</string>
+    <string name="session_manager_last_session_name">Last session: %s</string>
+    <string name="session_manager_continue_last_session_button">Continue last session</string>
 </resources>
