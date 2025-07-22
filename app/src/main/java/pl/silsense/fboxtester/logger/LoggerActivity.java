@@ -3,7 +3,6 @@ package pl.silsense.fboxtester.logger;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -51,7 +50,7 @@ public class LoggerActivity extends AppCompatActivity {
 
         viewModel.getSession().observe(this, session -> {
             if(session != null) {
-                binding.textViewLoggerTest.setText(session.getFile().getName());
+                // sesja!!!
             }
         });
     }

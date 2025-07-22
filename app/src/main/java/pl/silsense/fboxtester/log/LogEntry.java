@@ -11,7 +11,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public abstract class LogEntry {
+public class LogEntry {
 
     private final Instant timestamp;
     private final Device device;
