@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.inject.Inject;
@@ -62,12 +63,13 @@ class SessionRepositoryImpl implements SessionRepository {
 
     @NonNull
     @Override
-    public Optional<Session> createNewSession(@NonNull String sessionName) {
+    public Optional<Session> createNewSession() {
         Optional<DocumentFile> defaultDirectory = getDefaultSessionDirectory();
         if (defaultDirectory.isEmpty() || !defaultDirectory.get().exists()) {
             throw new IllegalStateException("Default session directory not set or does not exist.");
         }
 
+        String sessionName = generateSessionName();
         DocumentFile sessionFile = defaultDirectory.get().createFile("text/csv", sessionName + ".csv");
         if (sessionFile != null) {
             Session session = new SessionImpl(sessionName, sessionFile);
@@ -128,5 +130,10 @@ class SessionRepositoryImpl implements SessionRepository {
         Session session = new SessionImpl(sessionName, file);
         setLastSession(session);
         return session;
+    }
+
+    private String generateSessionName() {
+        LocalDateTime time = LocalDateTime.now();
+        return time.getDayOfMonth() + "-" + time.getMonthValue() + "_" + time.getHour() + "-" + time.getMinute() + "-" + time.getSecond() + "_" + time.getYear();
     }
 }

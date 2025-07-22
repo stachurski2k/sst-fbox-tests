@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+// TODO przerobić
 public class LogEntryCsvConverter {
 
     private static final CsvMapper csvMapper = new CsvMapper();

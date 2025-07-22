@@ -13,7 +13,7 @@ public interface SessionRepository {
     void setDefaultSessionDirectory(@NonNull DocumentFile directory);
 
     @NonNull
-    Optional<Session> createNewSession(@NonNull String sessionName);
+    Optional<Session> createNewSession();
 
     @NonNull
     Optional<Session> getLastSession();
