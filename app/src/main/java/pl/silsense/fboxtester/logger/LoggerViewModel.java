@@ -31,7 +31,7 @@ public class LoggerViewModel extends ViewModel {
     private final MutableLiveData<LogType> selectedType = new MutableLiveData<>();
 
     @Getter
-    private final MutableLiveData<ConsumableEvent> showDeviceMenuFragment = new MutableLiveData<>(ConsumableEvent.HANDLED);
+    private final MutableLiveData<ConsumableEvent> showDeviceMenuFragment = new MutableLiveData<>(new ConsumableEvent());
     @Getter
     private final MutableLiveData<ConsumableEvent> showLogTypeFragment = new MutableLiveData<>(ConsumableEvent.HANDLED);
     @Getter

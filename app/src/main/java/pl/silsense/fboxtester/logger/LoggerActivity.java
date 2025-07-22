@@ -10,18 +10,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.documentfile.provider.DocumentFile;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import java.time.Instant;
 import java.util.Objects;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.silsense.fboxtester.R;
 import pl.silsense.fboxtester.databinding.ActivityLoggerBinding;
-import pl.silsense.fboxtester.log.Device;
-import pl.silsense.fboxtester.log.LogEntry;
-import pl.silsense.fboxtester.log.LogType;
-import pl.silsense.fboxtester.log.WallPosition;
 
 @AndroidEntryPoint
 public class LoggerActivity extends AppCompatActivity {
@@ -53,9 +50,9 @@ public class LoggerActivity extends AppCompatActivity {
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
-        viewModel.getSession().observe(this, session -> {
-            if(session != null) {
-                session.log(new LogEntry(Instant.now(), Device.THROWER_1, LogType.THROWER_CORRECT, new WallPosition(0.2f, 0.123f)));
+        viewModel.getShowDeviceMenuFragment().observe(this, event -> {
+            if(event.handle()) {
+                showFragment(new DevicesFragment());
             }
         });
     }
@@ -67,5 +64,11 @@ public class LoggerActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showFragment(@NonNull Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout_logger_fragment, fragment);
+        transaction.commit();
     }
 }
