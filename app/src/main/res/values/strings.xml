@@ -26,4 +26,6 @@
     <string name="session_manager_file_selection_error">Failed to select file!</string>
     <string name="session_manager_common_error">Error! Something went wrong.</string>
     <string name="logger_title">Logger</string>
+    <string name="stats_title">Statistics</string>
+    <string name="main_menu_stats">Statistics</string>
 </resources>

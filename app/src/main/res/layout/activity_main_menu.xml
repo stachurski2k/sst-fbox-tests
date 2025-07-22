@@ -46,6 +46,15 @@
                 android:text="@string/main_menu_settings"
                 android:onClick="@{() -> viewModel.openSettings()}"/>
 
+            <Button
+                android:id="@+id/button_main_menu_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textSize="24sp"
+                android:text="@string/main_menu_stats"
+                android:onClick="@{() -> viewModel.openStats()}"/>
+
         </LinearLayout>
 
     </ScrollView>

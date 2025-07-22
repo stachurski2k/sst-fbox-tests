@@ -14,6 +14,7 @@ public class MainMenuViewModel extends ViewModel {
 
     private final MutableLiveData<ConsumableEvent> openSessionManagerEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
     private final MutableLiveData<ConsumableEvent> openSettingsEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
+    private final MutableLiveData<ConsumableEvent> openStatsEvent = new MutableLiveData<>(ConsumableEvent.HANDLED);
 
     @Inject
     public MainMenuViewModel() {}
@@ -26,11 +27,19 @@ public class MainMenuViewModel extends ViewModel {
         return openSettingsEvent;
     }
 
+    public LiveData<ConsumableEvent> getOpenStatsEvent() {
+        return openStatsEvent;
+    }
+
     public void openSessionManager() {
         openSessionManagerEvent.setValue(new ConsumableEvent());
     }
 
     public void openSettings() {
         openSettingsEvent.setValue(new ConsumableEvent());
+    }
+
+    public void openStats() {
+        openStatsEvent.setValue(new ConsumableEvent());
     }
 }

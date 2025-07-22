@@ -17,6 +17,7 @@ import pl.silsense.fboxtester.R;
 import pl.silsense.fboxtester.databinding.ActivityMainMenuBinding;
 import pl.silsense.fboxtester.session.SessionManagerActivity;
 import pl.silsense.fboxtester.settings.SettingsActivity;
+import pl.silsense.fboxtester.stats.StatsActivity;
 
 @AndroidEntryPoint
 public class MainMenuActivity extends AppCompatActivity {
@@ -45,6 +46,12 @@ public class MainMenuActivity extends AppCompatActivity {
         viewModel.getOpenSessionManagerEvent().observe(this, event -> {
             if(event.handle()) {
                 startActivity(SessionManagerActivity.class);
+            }
+        });
+
+        viewModel.getOpenStatsEvent().observe(this, event -> {
+            if(event.handle()) {
+                startActivity(StatsActivity.class);
             }
         });
     }

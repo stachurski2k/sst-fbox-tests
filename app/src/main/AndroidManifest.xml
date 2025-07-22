@@ -37,6 +37,11 @@
             android:exported="false"
             android:theme="@style/Theme.FBoxTester.VisibleActionBar"
             android:screenOrientation="sensorPortrait"/>
+        <activity
+            android:name=".stats.StatsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FBoxTester.VisibleActionBar"
+            android:screenOrientation="sensorPortrait"/>
     </application>
 
 </manifest>
