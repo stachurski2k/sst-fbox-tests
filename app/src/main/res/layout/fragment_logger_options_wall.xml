@@ -22,7 +22,7 @@
             android:id="@+id/button11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="WALL_CORRECT"
+            android:text="@string/log_wall_correct"
             android:textSize="24sp"
             android:layout_marginBottom="16dp"
             android:padding="16dp" />
@@ -31,7 +31,7 @@
             android:id="@+id/button12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="WALL_DISPLACEMENT"
+            android:text="@string/log_wall_displacement"
             android:textSize="24sp"
             android:layout_marginBottom="16dp"
             android:padding="16dp" />
@@ -40,7 +40,7 @@
             android:id="@+id/button13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="WALL_OTHER"
+            android:text="@string/log_wall_other_error"
             android:textSize="24sp"
             android:padding="16dp" />
 
