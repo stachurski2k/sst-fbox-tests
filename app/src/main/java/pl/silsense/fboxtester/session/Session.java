@@ -25,9 +25,7 @@ public interface Session extends Serializable {
 /*
 * TODO:
 * Przenieść stringi z Session manager activity do stringów w zasobach.
-* Zmienić system nazw plików sesji, ustalić jak działa nazwa sesji.
 * Ulepszyć widok w Main Menu.
-* Przebudować LogEntry itd.
 * Zrobić fragmenty dla loggera:
 * - menu wyboru elementu
 * - menu z nazwami błędów
