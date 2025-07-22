@@ -1,15 +1,20 @@
 package pl.silsense.fboxtester.logger;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import java.util.Locale;
 
 import pl.silsense.fboxtester.R;
 import pl.silsense.fboxtester.databinding.FragmentLoggerWallPositionBinding;
@@ -26,6 +31,7 @@ public class WallPositionFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_logger_wall_position, container, false);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -35,8 +41,25 @@ public class WallPositionFragment extends Fragment {
         binding.setLifecycleOwner(requireActivity());
         binding.setViewModel(viewModel);
 
-        binding.viewWallPositionWall.setOnClickListener(v -> {
-            viewModel.selectWallPosition(new WallPosition(0, 0)); // TODO change to position
+        binding.linearLayoutWallPositionRoot.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                int[] location = new int[2];
+                binding.viewWallPositionWall.getLocationOnScreen(location);
+                int left = location[0];
+                int top = location[1];
+                int right = left + binding.viewWallPositionWall.getWidth();
+                int bottom = top + binding.viewWallPositionWall.getHeight();
+
+                float x = event.getRawX();
+                float y = event.getRawY();
+
+                if (x >= left && x <= right && y >= top && y <= bottom) {
+                    float normX = x / v.getWidth();
+                    float normY = y / v.getHeight();
+                    viewModel.selectWallPosition(new WallPosition(normX, normY));
+                }
+            }
+            return true;
         });
     }
 }

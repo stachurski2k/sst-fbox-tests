@@ -8,6 +8,7 @@
     </data>
 
     <LinearLayout
+        android:id="@+id/linear_layout_wall_position_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
