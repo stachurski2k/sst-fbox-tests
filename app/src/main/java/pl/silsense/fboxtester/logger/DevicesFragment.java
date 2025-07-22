@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import pl.silsense.fboxtester.R;
+import pl.silsense.fboxtester.databinding.FragmentLoggerDevicesBinding;
 
 public class DevicesFragment extends Fragment {
 
@@ -28,5 +30,8 @@ public class DevicesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         LoggerViewModel viewModel = new ViewModelProvider(requireActivity()).get(LoggerViewModel.class);
+        FragmentLoggerDevicesBinding binding = DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_logger_devices);
+        binding.setLifecycleOwner(requireActivity());
+        binding.setViewModel(viewModel);
     }
 }

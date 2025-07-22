@@ -21,20 +21,3 @@ public interface Session extends Serializable {
     @NonNull
     List<LogEntry> readAll();
 }
-
-/*
-* TODO:
-* Przenieść stringi z Session manager activity do stringów w zasobach.
-* Ulepszyć widok w Main Menu.
-* Zrobić fragmenty dla loggera:
-* - menu wyboru elementu
-* - menu z nazwami błędów
-* - wybór miejsca na ścianie
-* Podpiąć fragmenty do aktywności loggera.
-* Sprawdzić czy logger działa.
-* Zrobić aktywność statystyk z:
-* - menu wybieranie sesji
-* - widok statystyk
-* + przycisk w menu głównym do statystyk.
-* Dodać wysyłanie przez UDP.
-* */

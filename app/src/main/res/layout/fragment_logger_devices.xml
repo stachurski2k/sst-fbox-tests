@@ -7,7 +7,8 @@
     <data>
         <variable
             name="viewModel"
-            type="pl.silsense.fboxtester.session.SessionManagerViewModel" />
+            type="pl.silsense.fboxtester.logger.LoggerViewModel" />
+        <import type="pl.silsense.fboxtester.log.Device"/>
     </data>
 
     <LinearLayout
@@ -30,6 +31,7 @@
                 android:textSize="22sp"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.WALL_1)}"
                />
 
             <Button
@@ -39,7 +41,8 @@
                 android:text="WALL_2"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.WALL_2)}"/>
         </LinearLayout>
 
         <LinearLayout
@@ -55,7 +58,8 @@
                 android:text="WALL_3"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.WALL_3)}"/>
 
             <Button
                 android:id="@+id/button4"
@@ -64,7 +68,8 @@
                 android:text="WALL_4"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.WALL_4)}"/>
         </LinearLayout>
 
         <LinearLayout
@@ -80,7 +85,8 @@
                 android:text="THROWER_1"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.THROWER_1)}"/>
 
             <Button
                 android:id="@+id/button6"
@@ -89,7 +95,8 @@
                 android:text="THROWER_2"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.THROWER_2)}"/>
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +112,8 @@
                 android:text="THROWER_3"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.THROWER_3)}"/>
 
             <Button
                 android:id="@+id/button8"
@@ -114,7 +122,8 @@
                 android:text="THROWER_4"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.THROWER_4)}"/>
         </LinearLayout>
 
         <LinearLayout
@@ -130,7 +139,8 @@
                 android:text="THROWER_5"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.THROWER_5)}"/>
 
             <Button
                 android:id="@+id/button10"
@@ -139,7 +149,8 @@
                 android:text="THROWER_6"
                 android:textSize="22sp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:onClick="@{() -> viewModel.selectDevice(Device.THROWER_6)}"/>
         </LinearLayout>
 
     </LinearLayout>
