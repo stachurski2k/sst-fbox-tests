@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".session.SessionManagerActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="pl.silsense.fboxtester.session.SessionManagerViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <View
+            android:id="@+id/View"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:background="#FF9800"
+            android:layout_margin="16dp"
+            android:padding="16dp" />
+
+    </LinearLayout>
+
+</layout>
