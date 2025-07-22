@@ -1,5 +1,8 @@
 package pl.silsense.fboxtester.log;
 
+import lombok.Getter;
+
+@Getter
 public enum Device {
     WALL_1(true),
     WALL_2(true),
@@ -12,9 +15,9 @@ public enum Device {
     THROWER_5(false),
     THROWER_6(false);
 
-    public final boolean isWall;
+    public final boolean wall;
 
-    Device(boolean isWall) {
-        this.isWall = isWall;
+    Device(boolean wall) {
+        this.wall = wall;
     }
 }
