@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".session.SessionManagerActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
             name="viewModel"
-            type="pl.silsense.fboxtester.session.SessionManagerViewModel" />
+            type="pl.silsense.fboxtester.logger.LoggerViewModel" />
+        <import type="pl.silsense.fboxtester.log.LogType"/>
     </data>
 
     <LinearLayout
@@ -25,7 +23,8 @@
             android:text="@string/log_thrower_correct"
             android:textSize="24sp"
             android:layout_marginBottom="16dp"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:onClick="@{() -> viewModel.selectLogType(LogType.THROWER_CORRECT)}"/>
 
         <Button
             android:id="@+id/button15"
@@ -34,7 +33,8 @@
             android:text="@string/log_thrower_excitation"
             android:textSize="24sp"
             android:layout_marginBottom="16dp"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:onClick="@{() -> viewModel.selectLogType(LogType.THROWER_EXCITATION)}"/>
 
         <Button
             android:id="@+id/button16"
@@ -43,7 +43,8 @@
             android:text="@string/log_thrower_no_launch"
             android:textSize="24sp"
             android:layout_marginBottom="16dp"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:onClick="@{() -> viewModel.selectLogType(LogType.THROWER_NO_LAUNCH)}"/>
 
         <Button
             android:id="@+id/button17"
@@ -51,7 +52,8 @@
             android:layout_height="wrap_content"
             android:text="@string/log_thrower_other"
             android:textSize="24sp"
-            android:padding="16dp"/>
+            android:padding="16dp"
+            android:onClick="@{() -> viewModel.selectLogType(LogType.THROWER_OTHER)}"/>
 
     </LinearLayout>
 

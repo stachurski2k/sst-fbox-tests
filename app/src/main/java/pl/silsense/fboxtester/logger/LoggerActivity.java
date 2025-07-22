@@ -65,7 +65,7 @@ public class LoggerActivity extends AppCompatActivity {
                 if(device.isWall()) {
                     showFragment(new OptionsWallFragment());
                 } else {
-                    // TODO
+                    showFragment(new OptionsThrowerFragment());
                 }
             }
         });
