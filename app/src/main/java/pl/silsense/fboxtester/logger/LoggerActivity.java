@@ -69,6 +69,12 @@ public class LoggerActivity extends AppCompatActivity {
                 }
             }
         });
+
+        viewModel.getShowWallPositionFragment().observe(this, event -> {
+            if(event.handle()) {
+                showFragment(new WallPositionFragment());
+            }
+        });
     }
 
     @Override

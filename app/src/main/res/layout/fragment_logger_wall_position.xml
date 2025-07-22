@@ -16,7 +16,7 @@
         android:gravity="center">
 
         <View
-            android:id="@+id/View"
+            android:id="@+id/view_wall_position_wall"
             android:layout_width="400dp"
             android:layout_height="200dp"
             android:background="#FF9800"

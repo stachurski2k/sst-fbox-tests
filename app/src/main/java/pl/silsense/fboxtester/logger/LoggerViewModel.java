@@ -3,16 +3,22 @@ package pl.silsense.fboxtester.logger;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.documentfile.provider.DocumentFile;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import java.time.Instant;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import lombok.Getter;
 import pl.silsense.fboxtester.log.Device;
+import pl.silsense.fboxtester.log.LogEntry;
 import pl.silsense.fboxtester.log.LogType;
+import pl.silsense.fboxtester.log.WallPosition;
 import pl.silsense.fboxtester.session.Session;
 import pl.silsense.fboxtester.session.SessionRepository;
 import pl.silsense.fboxtester.util.ConsumableEvent;
@@ -58,6 +64,27 @@ public class LoggerViewModel extends ViewModel {
 
     public void selectLogType(@NonNull LogType type) {
         this.selectedType.setValue(type);
-        // TODO if type...
+        if(type.isWallOption()) {
+            showWallPositionFragment.setValue(new ConsumableEvent());
+        } else {
+            log(null);
+        }
+    }
+
+    void selectWallPosition(WallPosition wallPosition) {
+        log(wallPosition);
+    }
+
+    private void log(@Nullable WallPosition wallPosition) {
+        var device = selectedDevice.getValue();
+        var type = selectedType.getValue();
+        if(device == null || type == null) {
+            //throw new IllegalStateException("Device and type must be selected!");
+        } else {
+            Objects.requireNonNull(session.getValue()).log(new LogEntry(Instant.now(), device, type, wallPosition));
+            selectedDevice.setValue(null);
+            selectedType.setValue(null);
+            showDeviceMenuFragment.setValue(new ConsumableEvent());
+        }
     }
 }
