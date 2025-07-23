@@ -23,14 +23,13 @@
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:padding="16dp"
-                android:text="Statystyki"/>
+                android:text="@string/stats_title"/>
 
             <TextView
                 android:padding="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="AB\n\n\nn\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrthrthrh\n\n\n\n\n\n\n\n\\n\\n\n\\n\\n\\n\\n\\n\\n\n\\n\\nn\\n\n\n\n\n\n\n\n\n\n\nn\n\n\n\n\rthrhrthn\n\n\n\n\n\n\n\n\n\rthrhrthnn\n\n\n\n\n\n\n\nC"/>
-
+                android:text="@{viewModel.statisticsContent}"/>
 
         </LinearLayout>
     </ScrollView>

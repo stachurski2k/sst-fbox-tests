@@ -10,11 +10,13 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import lombok.Getter;
+import pl.silsense.fboxtester.log.LogEntry;
 import pl.silsense.fboxtester.session.Session;
 import pl.silsense.fboxtester.session.SessionRepository;
 import pl.silsense.fboxtester.util.ConsumableEvent;
@@ -64,5 +66,25 @@ public class StatsViewModel extends ViewModel {
         }
         importedSessions.setValue(sessions);
         showStatsDetailsFragment.setValue(new ConsumableEvent());
+    }
+
+    private List<LogEntry> getAllLogEntriesFromImportedSessions() {
+        List<Session> sessions = importedSessions.getValue();
+        if(sessions == null) {
+            return new ArrayList<>();
+        }
+        List<LogEntry> entries = new ArrayList<>();
+        for (Session session : sessions) {
+            entries.addAll(session.readAll());
+        }
+        return entries;
+    }
+
+    /**
+     * @return content for text view in statistics details fragment.
+     */
+    // TODO implement
+    public String getStatisticsContent() {
+        return "";
     }
 }
