@@ -20,9 +20,7 @@
             android:id="@+id/view_wall_position_wall"
             android:layout_width="400dp"
             android:layout_height="200dp"
-            android:background="#FF9800"
-            android:layout_margin="16dp"
-            android:padding="16dp" />
+            android:background="#FF9800"/>
 
     </LinearLayout>
 
