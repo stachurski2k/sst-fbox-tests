@@ -10,4 +10,10 @@
         <item name="windowNoTitle">false</item>
     </style>
 
+    <style name="Theme.FBoxTester.DeviceButton" parent="Widget.AppCompat.Button">
+        <item name="android:textSize">36sp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>
