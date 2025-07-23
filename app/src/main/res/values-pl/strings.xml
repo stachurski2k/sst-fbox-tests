@@ -35,4 +35,6 @@
     <string name="session_manager_import_session_description">Załaduj istniejącą sesję z pliku. Zostaniesz poproszony o wybór pliku sesji z pamięci.</string>
     <string name="session_manager_last_session_name">Ostatnia sesja: %s</string>
     <string name="session_manager_continue_last_session_button">Kontynuuj ostatnią sesję</string>
+    <string name="stats_import_import_session_description">Załaduj istniejące sesje z pliku. Zostaniesz poproszony o wybór plików sesji z pamięci.</string>
+    <string name="stats_import_import_session_button">Załaduj sesje z pliku</string>
 </resources>

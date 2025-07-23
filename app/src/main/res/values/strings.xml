@@ -34,4 +34,6 @@
     <string name="session_manager_import_session_description">Load an existing session from a file. You will be prompted to select a session file from storage.</string>
     <string name="session_manager_last_session_name">Last session: %s</string>
     <string name="session_manager_continue_last_session_button">Continue last session</string>
+    <string name="stats_import_import_session_description">Load an existing session(s) from a file. You will be prompted to select a session file(s) from storage.</string>
+    <string name="stats_import_import_session_button">Import session(s) from file</string>
 </resources>
