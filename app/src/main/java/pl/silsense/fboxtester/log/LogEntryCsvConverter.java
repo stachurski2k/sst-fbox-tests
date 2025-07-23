@@ -31,7 +31,7 @@ public class LogEntryCsvConverter {
         LogType logType = LogType.values()[Integer.parseInt(fields[2])];
 
         WallPosition wallPosition = null;
-        if (!fields[3].isEmpty()) {
+        if (fields.length >= 5) {
             float x = Float.parseFloat(fields[3]);
             float y = Float.parseFloat(fields[4]);
             wallPosition = new WallPosition(x, y);
