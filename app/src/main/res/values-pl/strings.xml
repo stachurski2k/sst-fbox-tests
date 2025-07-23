@@ -37,4 +37,14 @@
     <string name="session_manager_continue_last_session_button">Kontynuuj ostatnią sesję</string>
     <string name="stats_import_import_session_description">Załaduj istniejące sesje z pliku. Zostaniesz poproszony o wybór plików sesji z pamięci.</string>
     <string name="stats_import_import_session_button">Załaduj sesje z pliku</string>
+    <string name="logger_wall_1_name">S1</string>
+    <string name="logger_wall_2_name">S3</string>
+    <string name="logger_wall_3_name">S2</string>
+    <string name="logger_wall_4_name">S4</string>
+    <string name="logger_thrower_1_name">W1</string>
+    <string name="logger_thrower_2_name">W2</string>
+    <string name="logger_thrower_3_name">W3</string>
+    <string name="logger_thrower_4_name">W4</string>
+    <string name="logger_thrower_5_name">W5</string>
+    <string name="logger_thrower_6_name">W6</string>
 </resources>

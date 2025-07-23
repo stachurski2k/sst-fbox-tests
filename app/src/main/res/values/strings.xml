@@ -36,4 +36,14 @@
     <string name="session_manager_continue_last_session_button">Continue last session</string>
     <string name="stats_import_import_session_description">Load an existing session(s) from a file. You will be prompted to select a session file(s) from storage.</string>
     <string name="stats_import_import_session_button">Import session(s) from file</string>
+    <string name="logger_wall_1_name">W1</string>
+    <string name="logger_wall_2_name">W2</string>
+    <string name="logger_wall_3_name">W3</string>
+    <string name="logger_wall_4_name">W4</string>
+    <string name="logger_thrower_1_name">T1</string>
+    <string name="logger_thrower_2_name">T2</string>
+    <string name="logger_thrower_3_name">T3</string>
+    <string name="logger_thrower_4_name">T4</string>
+    <string name="logger_thrower_5_name">T5</string>
+    <string name="logger_thrower_6_name">T6</string>
 </resources>
